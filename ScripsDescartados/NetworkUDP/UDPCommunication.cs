@@ -22,7 +22,7 @@ public class UDPMessageEvent : UnityEvent<string, string, byte[]>
 public class UDPCommunication : Singleton<UDPCommunication>
 {
     [Tooltip("port to listen for incoming data")]
-    public string internalPort = "8001";
+    public string internalPort = "12345";
 
     [Tooltip("IP-Address for sending")]
     public string externalIP = "192.168.17.110";
@@ -49,6 +49,14 @@ public class UDPCommunication : Singleton<UDPCommunication>
     {
         Debug.Log("GOT MESSAGE FROM: " + host + " on port " + port + " " + data.Length.ToString() + " bytes ");
     }
+
+    //Send an UDP-Packet
+    public async void SendUDPMessage(string HostIP, string HostPort, byte[] data)
+    {
+        await _SendUDPMessage(HostIP, HostPort, data);
+    }
+
+
 
     DatagramSocket socket;
 
@@ -86,6 +94,25 @@ public class UDPCommunication : Singleton<UDPCommunication>
             return;
         }
 
+        if(sendPingAtStart)
+            SendUDPMessage(externalIP, externalPort, Encoding.UTF8.GetBytes(PingMessage));
+
+    }
+
+
+
+
+    private async System.Threading.Tasks.Task _SendUDPMessage(string externalIP, string externalPort, byte[] data)
+    {
+        using (var stream = await socket.GetOutputStreamAsync(new Windows.Networking.HostName(externalIP), externalPort))
+        {
+            using (var writer = new Windows.Storage.Streams.DataWriter(stream))
+            {
+                writer.WriteBytes(data);
+                await writer.StoreAsync();
+
+            }
+        }
     }
 
 

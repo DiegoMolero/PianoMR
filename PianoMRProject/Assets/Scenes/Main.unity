@@ -250,9 +250,40 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114951867592907084, guid: 26a7e86e40cb51e4fa0419741289fc14,
+        type: 2}
+      propertyPath: sendPingAtStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114951867592907084, guid: 26a7e86e40cb51e4fa0419741289fc14,
+        type: 2}
+      propertyPath: externalPort
+      value: 8002
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114951867592907084, guid: 26a7e86e40cb51e4fa0419741289fc14, type: 2}
+    - {fileID: 114898562657967114, guid: 26a7e86e40cb51e4fa0419741289fc14, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 26a7e86e40cb51e4fa0419741289fc14, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &450238940 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1928635815414014, guid: 26a7e86e40cb51e4fa0419741289fc14,
+    type: 2}
+  m_PrefabInternal: {fileID: 450238939}
+--- !u!114 &450238941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 450238940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453a29ee772e77f45b7cd380c53af400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Port: 8000
+  Host: 172.31.254.97
+  _UDP_PORT: 8001
 --- !u!114 &479387230 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114611684728110934, guid: a611e772ef8ddf64d8106a9cbb70f31c,
@@ -531,7 +562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1009358515
 MonoBehaviour:
   m_ObjectHideFlags: 0
