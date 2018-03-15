@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+
 #if !UNITY_EDITOR
+using Windows.Networking;
 using Windows.Networking.Sockets;
 #endif
 public class Network : MonoBehaviour {
@@ -35,8 +37,8 @@ public class Network : MonoBehaviour {
         try
         {
             _socket = new StreamSocket();
-            Debug.Log("Connecting to "+Host);
-            Windows.Networking.HostName serverHost = new Windows.Networking.HostName(Host);
+            Debug.Log("Connecting to "+Host+":"+Port);
+            HostName serverHost = new HostName(Host);
 
             await _socket.ConnectAsync(serverHost, Port);
 
@@ -55,7 +57,7 @@ public class Network : MonoBehaviour {
         catch (Exception e)
         {
             //Handle exception here.  
-            Debug.Log(e.ToString());
+            Debug.Log("Error de conexion! :"+e.ToString());
         }
     }
 #endif
