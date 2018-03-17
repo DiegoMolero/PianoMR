@@ -1,17 +1,32 @@
-﻿using System;
+﻿using HoloToolkit.Unity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Events;
 
 #if !UNITY_EDITOR
 using Windows.Networking;
 using Windows.Networking.Sockets;
 using System.Threading.Tasks;
 #endif
-public class Network : MonoBehaviour {
+[System.Serializable]
+public class PianoMessageEvent : UnityEvent<string>
+{
+
+}
+
+public class TCPCommunication : Singleton<TCPCommunication>
+{
+    [Tooltip("Port for connecting to the server")]
     public String Port="8000";
+    [Tooltip("IP of the server. (Given by QR Code)")]
     public String Host= "";
+    [Tooltip("Function to invoke at incoming packet")]
+    public PianoMessageEvent pianoEvent = null;
+
+
     private Boolean _connection;
 #if !UNITY_EDITOR
     StreamSocket _socket;
@@ -25,12 +40,16 @@ public class Network : MonoBehaviour {
 #if !UNITY_EDITOR
     async void Start()
     {
+        if (pianoEvent == null)
+        {
+            Debug.Log("Piano event needs a function to invoke for sending incoming data");
+        }
         _connection = false;
         TCPclient();
     }
 #endif
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
@@ -50,7 +69,7 @@ public class Network : MonoBehaviour {
             //Write data to the echo server.
             Stream streamOut = _socket.OutputStream.AsStreamForWrite();
             StreamWriter writer = new StreamWriter(streamOut);
-            string request = "test";
+            string request = "";
             await writer.WriteLineAsync(request);
             await writer.FlushAsync();
 
@@ -82,12 +101,13 @@ public class Network : MonoBehaviour {
             try
             {
                 string response = await reader.ReadLineAsync();
+                pianoEvent.Invoke(response);
                 Debug.Log("Recieved: " + response);
             }
             catch (Exception e)
             {
                 //Handle exception here.  
-                Debug.Log("Connection error! :" + e.ToString());
+                Debug.Log("Error recieving data: " + e.ToString());
                 throw e;
             }
         }

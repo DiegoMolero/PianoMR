@@ -282,7 +282,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Port: 8000
-  Host: 172.31.254.97
+  Host: 192.168.1.38
+  pianoEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 450238942}
+        m_MethodName: RecievePianoData
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: PianoMessageEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &450238942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 450238940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec80779a5e114a942be4c50e50e0684f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tm: {fileID: 1275486602}
 --- !u!114 &479387230 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114611684728110934, guid: a611e772ef8ddf64d8106a9cbb70f31c,
@@ -714,6 +742,11 @@ MonoBehaviour:
   Axis0Destination: 0
   Axis1Destination: 2
   Axis2Destination: 6
+--- !u!102 &1275486602 stripped
+TextMesh:
+  m_PrefabParentObject: {fileID: 102872736812571794, guid: 26a7e86e40cb51e4fa0419741289fc14,
+    type: 2}
+  m_PrefabInternal: {fileID: 450238939}
 --- !u!1 &1369008098
 GameObject:
   m_ObjectHideFlags: 0
