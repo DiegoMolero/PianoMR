@@ -45,13 +45,18 @@ public class TCPCommunication : Singleton<TCPCommunication>
             Debug.Log("Piano event needs a function to invoke for sending incoming data");
         }
         _connection = false;
-        TCPclient();
     }
 #endif
     // Update is called once per frame
     void Update () {
 		
 	}
+#if !UNITY_EDITOR
+    public async void StartPianoConnection()
+    {
+        TCPclient();
+    }
+#endif
 
 #if !UNITY_EDITOR
     private async void TCPclient(){

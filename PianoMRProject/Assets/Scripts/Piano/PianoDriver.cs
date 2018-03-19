@@ -9,7 +9,6 @@ public class PianoDriver : MonoBehaviour {
 
     public void RecievePianoData(string data)
     {
-
         if (tm != null)  tm.text = data;
         Debug.Log("Event recieving: "+data);
     }
