@@ -11,11 +11,7 @@ using Windows.Networking;
 using Windows.Networking.Sockets;
 using System.Threading.Tasks;
 #endif
-[System.Serializable]
-public class PianoMessageEvent : UnityEvent<string>
-{
 
-}
 
 public class TCPCommunication : Singleton<TCPCommunication>
 {
@@ -44,6 +40,8 @@ public class TCPCommunication : Singleton<TCPCommunication>
         {
             Debug.Log("Piano event needs a function to invoke for sending incoming data");
         }
+        pianoEvent.AddListener(GameObject.FindGameObjectWithTag("PianoDriver").GetComponent<PianoDriver>().RecievePianoData); //Subscribe Piano event data
+        StartPianoConnection();
         _connection = false;
     }
 #endif
@@ -65,23 +63,30 @@ public class TCPCommunication : Singleton<TCPCommunication>
         {
             _socket = new StreamSocket();
             Debug.Log("Connecting to "+Host+":"+Port);
-            HostName serverHost = new HostName(Host);
+            HostName serverHost = new HostName("161.67.106.43");
 
             await _socket.ConnectAsync(serverHost, Port);
             //Connection Suscess
             Debug.Log("Connected");
             _connection = true;
             //Write data to the echo server.
+            /*
             Stream streamOut = _socket.OutputStream.AsStreamForWrite();
             StreamWriter writer = new StreamWriter(streamOut);
             string request = "";
             await writer.WriteLineAsync(request);
             await writer.FlushAsync();
-
+            */
             //Read data from the server.
             Stream streamIn = _socket.InputStream.AsStreamForRead();
             StreamReader reader = new StreamReader(streamIn);
-            await readTCPDataAsync(reader);
+            await reader.ReadLineAsync();
+            while (_connection == true)
+            {
+                string response = await reader.ReadLineAsync();
+                Debug.Log("Revieced: " + response);
+                pianoEvent.Invoke(response);
+            }
 
         }
         catch (Exception e)
@@ -96,26 +101,4 @@ public class TCPCommunication : Singleton<TCPCommunication>
     {
         return _connection;
     }
-
-#if !UNITY_EDITOR
-    private async Task readTCPDataAsync(StreamReader reader)
-    {
-
-        while(_connection == true)
-        {
-            try
-            {
-                string response = await reader.ReadLineAsync();
-                pianoEvent.Invoke(response);
-                Debug.Log("Recieved: " + response);
-            }
-            catch (Exception e)
-            {
-                //Handle exception here.  
-                Debug.Log("Error recieving data: " + e.ToString());
-                throw e;
-            }
-        }
-    }
-#endif
 }

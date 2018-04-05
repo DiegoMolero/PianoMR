@@ -12,21 +12,20 @@ public class StageManager : Singleton<StageManager>
         SplashesView, //Show the splashes
         VuforiaPiano,//Detecting piano board with vuforia
         QRScan, //Scanning QR Ip 
-        TCPSConnection,//Initializing TCP connection
+        PianoConnection,//Initializing TCP connection
         GameInitialization//Starting the game
     };
-    public State AppState;
+    public State AppState= State.AppInitialized;
     public TextMesh InfoText = null;
     private State PreviousState;
+
+    public GameObject PianoDriver;
     // Use this for initialization
     protected override void Awake()
     { 
         PreviousState = State.None;
 #if !UNITY_EDITOR
-        AppState = State.QRScan;
-#endif
-#if UNITY_EDITOR
-        AppState = State.AppInitialized;
+        AppState = State.PianoConnection;
 #endif
     }
 
@@ -57,8 +56,10 @@ public class StageManager : Singleton<StageManager>
                     printMsg("QR State Initialized");
                     GameObject.FindGameObjectWithTag("PianoDriver").GetComponent<Placeholder>().OnScan();
                     break;
-                case State.TCPSConnection:
-                    Debug.Log("TCP State Initialized");
+                case State.PianoConnection:
+                    Debug.Log("PianoConnection State Initialized");
+                    GameObject aux = Instantiate(PianoDriver);
+                    aux.name = aux.transform.name.Replace("(Clone)", "");
                     break;
                 case State.GameInitialization:
                     

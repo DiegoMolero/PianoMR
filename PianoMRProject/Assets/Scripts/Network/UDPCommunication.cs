@@ -85,7 +85,7 @@ public class UDPCommunication : Singleton<UDPCommunication>
                 hn =>
                     hn.IPInformation?.NetworkAdapter != null && hn.IPInformation.NetworkAdapter.NetworkAdapterId
                     == icp.NetworkAdapter.NetworkAdapterId);
-
+            Debug.Log("Listening for data in IP" + IP.ToString()+" Port: "+internalPort);
             await socket.BindEndpointAsync(IP, internalPort);
         }
         catch (Exception e)
@@ -94,10 +94,7 @@ public class UDPCommunication : Singleton<UDPCommunication>
             Debug.Log(SocketError.GetStatus(e.HResult).ToString());
             return;
         }
-
-        if(sendPingAtStart)
-            SendUDPMessage(externalIP, externalPort, Encoding.UTF8.GetBytes(PingMessage));
-
+        SendUDPMessage(externalIP, externalPort, Encoding.UTF8.GetBytes(IP.ToString()));
     }
 
 

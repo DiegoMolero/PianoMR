@@ -1,0 +1,18 @@
+Last 2 digits are is the key has been pressed or not
+
+7F -> Pressed
+00 -> Unpressed
+
+3C -> Do
+3D -> Do#
+3E -> Re
+3F -> Re#
+40 -> Mi
+41 -> Fa
+42 -> Fa#
+43 -> Sol
+44 -> Sol#
+45 -> La
+46 -> La#
+47 -> Si
+48 -> Do'
