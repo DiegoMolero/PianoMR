@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PianoDriver
+  - Piano
   layers:
   - Default
   - TransparentFX

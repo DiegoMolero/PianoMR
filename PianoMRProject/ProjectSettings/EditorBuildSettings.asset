@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TCPScene.unity
     guid: 35dc13ff2e048804ca0450566f4f3b0f
   - enabled: 0
@@ -14,3 +14,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TCP_MIDIScene.unity
     guid: 4270cf5feace0ca4f8da15de96eab6b0
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 855b98783e1e2bb4b8f5ffd1ae7dc61b

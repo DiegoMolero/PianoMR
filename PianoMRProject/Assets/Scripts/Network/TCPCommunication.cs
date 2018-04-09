@@ -19,8 +19,7 @@ public class TCPCommunication : Singleton<TCPCommunication>
     public String Port="8000";
     [Tooltip("IP of the server. (Given by QR Code)")]
     public String Host= "";
-    [Tooltip("Function to invoke at incoming packet")]
-    public PianoMessageEvent pianoEvent = null;
+    private PianoDriver _pianodriver;
 
 
     private Boolean _connection;
@@ -36,11 +35,6 @@ public class TCPCommunication : Singleton<TCPCommunication>
 #if !UNITY_EDITOR
     async void Start()
     {
-        if (pianoEvent == null)
-        {
-            Debug.Log("Piano event needs a function to invoke for sending incoming data");
-        }
-        pianoEvent.AddListener(GameObject.FindGameObjectWithTag("PianoDriver").GetComponent<PianoDriver>().RecievePianoData); //Subscribe Piano event data
         StartPianoConnection();
         _connection = false;
     }
@@ -55,6 +49,11 @@ public class TCPCommunication : Singleton<TCPCommunication>
         TCPclient();
     }
 #endif
+    public void setPianoDriver(PianoDriver aux)
+    {
+        _pianodriver = aux;
+    }
+
 
 #if !UNITY_EDITOR
     private async void TCPclient(){
@@ -83,9 +82,17 @@ public class TCPCommunication : Singleton<TCPCommunication>
             await reader.ReadLineAsync();
             while (_connection == true)
             {
-                string response = await reader.ReadLineAsync();
-                Debug.Log("Revieced: " + response);
-                pianoEvent.Invoke(response);
+                try
+                {
+                    string response = await reader.ReadLineAsync();
+                    Debug.Log("Revieced: " + response);
+                    _pianodriver.RecievePianoData(response);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log("Connection error! :" + e.ToString());
+                }
+
             }
 
         }
@@ -93,7 +100,7 @@ public class TCPCommunication : Singleton<TCPCommunication>
         {
             //Handle exception here.  
             Debug.Log("Connection error! :"+e.ToString());
-            _connection = false;
+            //_connection = false;
         }
     }
 #endif
