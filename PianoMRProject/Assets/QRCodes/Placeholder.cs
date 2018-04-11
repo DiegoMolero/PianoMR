@@ -22,7 +22,7 @@ public class Placeholder : MonoBehaviour
             if(result == null) OnScan();
             else{
                 GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().IpAdrress = result;
-                GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().ChangeState(StageManager.State.PianoConnection);
+                GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().NextState();
             }
           }, 
           false);

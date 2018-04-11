@@ -308,21 +308,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114135588938935876, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
+    - target: {fileID: 114194278075887296, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
         type: 2}
-      propertyPath: AppState
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114135588938935876, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
-        type: 2}
-      propertyPath: QRScanner
+      propertyPath: MainCamera
       value: 
-      objectReference: {fileID: 1827247963796782, guid: dfe318886f7208747925a1a6978e7ff8,
-        type: 2}
-    - target: {fileID: 1666420562101152, guid: 9adf6485e2c1ee04ea6c6a85a9192005, type: 2}
-      propertyPath: m_TagString
-      value: AppManager
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1552850643}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9adf6485e2c1ee04ea6c6a85a9192005, type: 2}
   m_IsPrefabParent: 0
@@ -799,8 +789,6 @@ GameObject:
   - component: {fileID: 1552850650}
   - component: {fileID: 1552850649}
   - component: {fileID: 1552850648}
-  - component: {fileID: 1552850647}
-  - component: {fileID: 1552850646}
   - component: {fileID: 1552850645}
   m_Layer: 0
   m_Name: Main Camera
@@ -847,50 +835,6 @@ MonoBehaviour:
   JoystickXYRotationAxisControl: {fileID: 1516360487}
   JoystickXYTranslationAxisControl: {fileID: 1016042831}
   JoystickXZTranslationAxisControl: {fileID: 1515270068}
---- !u!114 &1552850646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1552850643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -594688902, guid: f7b54ff4a43d4fcf81b4538b678e0bcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SurfaceParent: {fileID: 0}
-  m_FreezeUpdates: 0
-  m_VolumeType: 1
-  m_SphereRadius: 2
-  m_HalfBoxExtents: {x: 4, y: 4, z: 4}
-  m_LodType: 1
-  m_NumUpdatesBeforeRemoval: 10
-  m_SecondsBetweenUpdates: 2.5
-  m_CurrentRenderState: 1
-  m_VisualMaterial: {fileID: 0}
-  m_OcclusionMaterial: {fileID: 15302, guid: 0000000000000000f000000000000000, type: 0}
---- !u!114 &1552850647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1552850643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 247442469, guid: f7b54ff4a43d4fcf81b4538b678e0bcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SurfaceParent: {fileID: 0}
-  m_FreezeUpdates: 0
-  m_VolumeType: 1
-  m_SphereRadius: 2
-  m_HalfBoxExtents: {x: 4, y: 4, z: 4}
-  m_LodType: 1
-  m_NumUpdatesBeforeRemoval: 10
-  m_SecondsBetweenUpdates: 2.5
-  m_Layer: 0
-  m_Material: {fileID: 0}
-  m_EnableCollisions: 1
 --- !u!81 &1552850648
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1041,49 +985,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a611e772ef8ddf64d8106a9cbb70f31c, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1962806232
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1827247963796782, guid: dfe318886f7208747925a1a6978e7ff8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1962806234}
-  - component: {fileID: 1962806233}
-  m_Layer: 0
-  m_Name: QRScanner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1962806233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114057458374026898, guid: dfe318886f7208747925a1a6978e7ff8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1962806232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2b9b1db5a0b544085a5ad008607651, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1962806234
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4351640908503732, guid: dfe318886f7208747925a1a6978e7ff8,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1962806232}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2010684022
 GameObject:
   m_ObjectHideFlags: 0

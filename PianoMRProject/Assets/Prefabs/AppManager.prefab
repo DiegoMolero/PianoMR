@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4554617795630112}
-  - component: {fileID: 114135588938935876}
+  - component: {fileID: 114194278075887296}
   m_Layer: 0
   m_Name: AppManager
-  m_TagString: Untagged
+  m_TagString: AppManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
---- !u!114 &114135588938935876
+--- !u!114 &114194278075887296
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -149,13 +149,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1666420562101152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5fee365c799f7e46af209f56f125041, type: 3}
+  m_Script: {fileID: 11500000, guid: b9ca80e1bb51bd04683e629835b4e132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AppState: 1
   InfoText: {fileID: 102606006249873826}
   PianoDriver: {fileID: 1436845680900096, guid: 26a7e86e40cb51e4fa0419741289fc14,
     type: 2}
+  QRScanner: {fileID: 1827247963796782, guid: dfe318886f7208747925a1a6978e7ff8, type: 2}
+  MainCamera: {fileID: 0}
+  IpAdrress: 
 --- !u!114 &114719991416675578
 MonoBehaviour:
   m_ObjectHideFlags: 1

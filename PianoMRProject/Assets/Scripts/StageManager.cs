@@ -2,18 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using Vuforia;
 
 public class StageManager : Singleton<StageManager>
 {
     public enum State
     {
-        None,//Null State
-        AppInitialized,//App Started
-        SplashesView, //Show the splashes
-        VuforiaPiano,//Detecting piano board with vuforia
-        QRScan, //Scanning QR Ip 
-        PianoConnection,//Initializing TCP connection
-        GameInitialization//Starting the game
+        None=0,//Null State
+        AppInitialized=1,//App Started
+        SplashesView=2, //Show the splashes
+        VuforiaPiano = 3,//Detecting piano board with vuforia
+        QRScan =4, //Scanning QR Ip 
+        PianoConnection=5,//Initializing TCP connection
+        GameInitialization=6//Starting the game
     };
     public State AppState= State.AppInitialized;
     private State PreviousState;
@@ -22,6 +23,7 @@ public class StageManager : Singleton<StageManager>
 
     public GameObject PianoDriver;
     public GameObject QRScanner;
+    public GameObject MainCamera;
 
     public string IpAdrress = null;
     // Use this for initialization
@@ -29,7 +31,6 @@ public class StageManager : Singleton<StageManager>
     { 
         PreviousState = State.None;
 #if !UNITY_EDITOR
-        //AppState = State.PianoConnection;
 #endif
     }
 
@@ -48,24 +49,38 @@ public class StageManager : Singleton<StageManager>
             switch (AppState)
             {
                 case State.AppInitialized:
-                    Debug.Log("App Initialized");
+                    printMsg("App Initialized");
+                    NextState();
                     break;
+                #region SPLASHES STATE
                 case State.SplashesView:
-                    
+                    printMsg("Splashes View");
+                    NextState();
                     break;
+                #endregion
+                #region VUFORIA PIANO STATE
                 case State.VuforiaPiano:
-                    
+                    printMsg("Vuforia Piano State Initializaed");
+                    //MainCamera.GetComponent<VuforiaBehaviour>().enabled = true;
+                    //MainCamera.GetComponent<DefaultInitializationErrorHandler>().enabled = true;
+                    NextState();
                     break;
+                #endregion
+                #region QR SCAN STATE
                 case State.QRScan:
+                    //MainCamera.GetComponent<VuforiaBehaviour>().enabled = false;
+                    //MainCamera.GetComponent<DefaultInitializationErrorHandler>().enabled = false;
                     printMsg("QR State Initialized");
 #if !UNITY_EDITOR
                     GameObject scanner = Instantiate(QRScanner);
 #endif
 #if UNITY_EDITOR
-                    ChangeState(State.PianoConnection);
+                    NextState();
                     IpAdrress = "simulator";
 #endif
                     break;
+                #endregion
+                #region PIANO CONNECTION STATE
                 case State.PianoConnection:
 #if !UNITY_EDITOR
                     Destroy(QRScanner);
@@ -74,9 +89,12 @@ public class StageManager : Singleton<StageManager>
                         GameObject driver = Instantiate(PianoDriver);
                         driver.name = driver.transform.name.Replace("(Clone)", "");
                     break;
+                #endregion
+                #region GAME STARTS STATE
                 case State.GameInitialization:
-                    printMsg("");
+                    printMsg("Game Initializaed");
                     break;
+                #endregion
             }
         }
 	}
@@ -91,5 +109,10 @@ public class StageManager : Singleton<StageManager>
     {
         PreviousState = AppState;
         AppState = aux;
+    }
+    public void NextState()
+    {
+        PreviousState = AppState;
+        AppState = AppState + 1;
     }
 }
