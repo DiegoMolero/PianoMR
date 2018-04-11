@@ -71,6 +71,7 @@ public class TCPCommunication : Singleton<TCPCommunication>
             await _socket.ConnectAsync(serverHost, Port);
             //Connection Suscess
             Debug.Log("Connected");
+            GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().ChangeState(StageManager.State.GameInitialization);
             _connection = true;
             //Write data to the echo server.
             /*

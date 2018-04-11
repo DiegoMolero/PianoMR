@@ -57,11 +57,9 @@ public class StageManager : Singleton<StageManager>
                     
                     break;
                 case State.QRScan:
-                    //printMsg("QR State Initialized");
+                    printMsg("QR State Initialized");
 #if !UNITY_EDITOR
                     GameObject scanner = Instantiate(QRScanner);
-                    scanner.name = scanner.transform.name.Replace("(Clone)", "");
-                    scanner.GetComponent<Placeholder>().OnScan();
 #endif
 #if UNITY_EDITOR
                     ChangeState(State.PianoConnection);
@@ -69,16 +67,15 @@ public class StageManager : Singleton<StageManager>
 #endif
                     break;
                 case State.PianoConnection:
-                    if (IpAdrress == null) ChangeState(State.QRScan);
-                    else
-                    {
-                        Debug.Log("PianoConnection State Initialized");
+#if !UNITY_EDITOR
+                    Destroy(QRScanner);
+#endif
+                    printMsg("PianoConnection State Initialized");
                         GameObject driver = Instantiate(PianoDriver);
                         driver.name = driver.transform.name.Replace("(Clone)", "");
-                    }
                     break;
                 case State.GameInitialization:
-                    
+                    printMsg("");
                     break;
             }
         }

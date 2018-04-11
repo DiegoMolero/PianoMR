@@ -45,6 +45,7 @@ public class PianoDriver : MonoBehaviour {
         GameObject aux = Instantiate(UnityConnection, transform);
         aux.name = aux.transform.name.Replace("(Clone)", "");
         aux.GetComponent<PianoUnitySimulator>().setPianoDriver(this);
+        GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().ChangeState(StageManager.State.GameInitialization);
 #endif
 #if !UNITY_EDITOR
         GameObject aux = Instantiate(HololensConnection, transform);
