@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Vuforia;
+using Vuforia;
 
 public class StageManager : Singleton<StageManager>
 {
@@ -48,10 +48,12 @@ public class StageManager : Singleton<StageManager>
             PreviousState = AppState;
             switch (AppState)
             {
+                #region APP INITIALATION STATE
                 case State.AppInitialized:
                     printMsg("App Initialized");
                     NextState();
                     break;
+                #endregion
                 #region SPLASHES STATE
                 case State.SplashesView:
                     printMsg("Splashes View");
@@ -61,9 +63,9 @@ public class StageManager : Singleton<StageManager>
                 #region VUFORIA PIANO STATE
                 case State.VuforiaPiano:
                     printMsg("Vuforia Piano State Initializaed");
-                    //MainCamera.GetComponent<VuforiaBehaviour>().enabled = true;
-                    //MainCamera.GetComponent<DefaultInitializationErrorHandler>().enabled = true;
-                    NextState();
+                    MainCamera.GetComponent<VuforiaBehaviour>().enabled = true;
+                    MainCamera.GetComponent<DefaultInitializationErrorHandler>().enabled = true;
+                    //NextState();
                     break;
                 #endregion
                 #region QR SCAN STATE
