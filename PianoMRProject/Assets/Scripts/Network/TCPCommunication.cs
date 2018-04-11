@@ -35,6 +35,7 @@ public class TCPCommunication : Singleton<TCPCommunication>
 #if !UNITY_EDITOR
     async void Start()
     {
+        Host = GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().IpAdrress;
         StartPianoConnection();
         _connection = false;
     }
@@ -53,7 +54,10 @@ public class TCPCommunication : Singleton<TCPCommunication>
     {
         _pianodriver = aux;
     }
-
+    public void setHost(String ip)
+    {
+        Host = ip;
+    }
 
 #if !UNITY_EDITOR
     private async void TCPclient(){
@@ -62,7 +66,7 @@ public class TCPCommunication : Singleton<TCPCommunication>
         {
             _socket = new StreamSocket();
             Debug.Log("Connecting to "+Host+":"+Port);
-            HostName serverHost = new HostName("161.67.106.43");
+            HostName serverHost = new HostName(Host);
 
             await _socket.ConnectAsync(serverHost, Port);
             //Connection Suscess

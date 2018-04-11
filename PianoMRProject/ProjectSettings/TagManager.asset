@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PianoDriver
   - Piano
+  - AppManager
   layers:
   - Default
   - TransparentFX

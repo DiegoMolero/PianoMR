@@ -16,16 +16,20 @@ public class StageManager : Singleton<StageManager>
         GameInitialization//Starting the game
     };
     public State AppState= State.AppInitialized;
-    public TextMesh InfoText = null;
     private State PreviousState;
 
+    public TextMesh InfoText = null;
+
     public GameObject PianoDriver;
+    public GameObject QRScanner;
+
+    public string IpAdrress = null;
     // Use this for initialization
     protected override void Awake()
     { 
         PreviousState = State.None;
 #if !UNITY_EDITOR
-        AppState = State.PianoConnection;
+        //AppState = State.PianoConnection;
 #endif
     }
 
@@ -53,13 +57,25 @@ public class StageManager : Singleton<StageManager>
                     
                     break;
                 case State.QRScan:
-                    printMsg("QR State Initialized");
-                    GameObject.FindGameObjectWithTag("PianoDriver").GetComponent<Placeholder>().OnScan();
+                    //printMsg("QR State Initialized");
+#if !UNITY_EDITOR
+                    GameObject scanner = Instantiate(QRScanner);
+                    scanner.name = scanner.transform.name.Replace("(Clone)", "");
+                    scanner.GetComponent<Placeholder>().OnScan();
+#endif
+#if UNITY_EDITOR
+                    ChangeState(State.PianoConnection);
+                    IpAdrress = "simulator";
+#endif
                     break;
                 case State.PianoConnection:
-                    Debug.Log("PianoConnection State Initialized");
-                    GameObject aux = Instantiate(PianoDriver);
-                    aux.name = aux.transform.name.Replace("(Clone)", "");
+                    if (IpAdrress == null) ChangeState(State.QRScan);
+                    else
+                    {
+                        Debug.Log("PianoConnection State Initialized");
+                        GameObject driver = Instantiate(PianoDriver);
+                        driver.name = driver.transform.name.Replace("(Clone)", "");
+                    }
                     break;
                 case State.GameInitialization:
                     
@@ -72,5 +88,11 @@ public class StageManager : Singleton<StageManager>
     {
         Debug.Log(msg);
         this.InfoText.text = msg;
+    }
+
+    public void ChangeState(State aux)
+    {
+        PreviousState = AppState;
+        AppState = aux;
     }
 }

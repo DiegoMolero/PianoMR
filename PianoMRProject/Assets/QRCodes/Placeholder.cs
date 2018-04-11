@@ -10,26 +10,26 @@ public class Placeholder : MonoBehaviour
   private void Start()
   {
     this.textMesh = this.textMeshObject.GetComponent<TextMesh>();
-    this.OnReset();
+    OnScan();
   }
   public void OnScan()
   {
-    this.textMesh.text = "scanning for 30s";
-
 #if !UNITY_EDITOR
     MediaFrameQrProcessing.Wrappers.ZXingQrCodeScanner.ScanFirstCameraForQrCode(
         result =>
         {
           UnityEngine.WSA.Application.InvokeOnAppThread(() =>
           {
-            this.textMesh.text = result ?? "not found";
+              Debug.Log("scaneado: " + result);
+              GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().IpAdrress = result;
+            GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().ChangeState(StageManager.State.PianoConnection);
           }, 
           false);
         },
         TimeSpan.FromSeconds(30));
 #endif
-  }
-  public void OnRun()
+    }
+    public void OnRun()
   {
     this.textMesh.text = "running forever";
 
