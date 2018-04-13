@@ -44,9 +44,9 @@ MonoBehaviour:
       ContainsMagnet: 0
   databaseLoad:
     dataSetsToLoad:
-    - VuforiaMars_Images
+    - Piano
     dataSetsToActivate:
-    - VuforiaMars_Images
+    - Piano
   videoBackground:
     clippingMode: 0
     numDivisions: 2

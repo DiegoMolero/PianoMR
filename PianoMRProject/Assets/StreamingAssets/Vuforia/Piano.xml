@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="piano3" size="0.180000 0.104039" />
+    <ImageTarget name="piano_2" size="0.180000 0.124449" />
+    <ImageTarget name="piano" size="0.168000 0.118366" />
+  </Tracking>
+</QCARConfig>
