@@ -23,7 +23,6 @@ public class StageManager : Singleton<StageManager>
 
     public GameObject PianoDriver;
     public GameObject QRScanner;
-    public GameObject MainCamera;
 
     public string IpAdrress = null;
     // Use this for initialization
@@ -63,15 +62,13 @@ public class StageManager : Singleton<StageManager>
                 #region VUFORIA PIANO STATE
                 case State.VuforiaPiano:
                     printMsg("Vuforia Piano State Initializaed");
-                    MainCamera.GetComponent<VuforiaBehaviour>().enabled = true;
-                    MainCamera.GetComponent<DefaultInitializationErrorHandler>().enabled = true;
+                    EnableVuforia();
                     //NextState();
                     break;
                 #endregion
                 #region QR SCAN STATE
                 case State.QRScan:
-                    //MainCamera.GetComponent<VuforiaBehaviour>().enabled = false;
-                    //MainCamera.GetComponent<DefaultInitializationErrorHandler>().enabled = false;
+                    DisableVuforia();
                     printMsg("QR State Initialized");
 #if !UNITY_EDITOR
                     GameObject scanner = Instantiate(QRScanner);
@@ -117,4 +114,16 @@ public class StageManager : Singleton<StageManager>
         PreviousState = AppState;
         AppState = AppState + 1;
     }
+    public void DisableVuforia()
+    {
+        Camera.main.GetComponent<VuforiaBehaviour>().enabled = false;
+        VuforiaRuntime.Instance.Deinit();
+    }
+    public void EnableVuforia()
+    {
+        VuforiaConfiguration.Instance.Vuforia.DelayedInitialization = false;
+        Camera.main.GetComponent<VuforiaBehaviour>().enabled = true;
+        VuforiaRuntime.Instance.InitVuforia();
+    }
+
 }
