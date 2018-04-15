@@ -53,18 +53,10 @@ public class InstructionSlate : MonoBehaviour
             }
 
             if (count == splashes.Capacity + 1)
-                LoadNextScene();
+                GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().NextState();
 
             if (slateRenderer.enabled == true)
                 isShown = true;
         }
-    }
-
-    /// <summary>
-    /// Load next scene
-    /// </summary>
-    private void LoadNextScene()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

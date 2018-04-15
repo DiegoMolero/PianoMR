@@ -23,21 +23,24 @@ public class StageManager : Singleton<StageManager>
 
     public GameObject PianoDriver;
     public GameObject QRScanner;
+    public GameObject Splashes;
+
+
+    private GameObject splahes_aux;
+    private GameObject driver_aux;
+    private GameObject qrscanner_aux;
 
     public string IpAdrress = null;
     // Use this for initialization
     protected override void Awake()
     { 
         PreviousState = State.None;
-#if !UNITY_EDITOR
-#endif
     }
 
 
     // Use this for initialization
     void Start () {
-		
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -56,11 +59,14 @@ public class StageManager : Singleton<StageManager>
                 #region SPLASHES STATE
                 case State.SplashesView:
                     printMsg("Splashes View");
-                    NextState();
+                    splahes_aux = Instantiate(Splashes);
+                    splahes_aux.name = splahes_aux.transform.name.Replace("(Clone)", "");
+                    //NextState();
                     break;
                 #endregion
                 #region VUFORIA PIANO STATE
                 case State.VuforiaPiano:
+                    Destroy(splahes_aux);
                     printMsg("Vuforia Piano State Initializaed");
                     EnableVuforia();
                     //NextState();
@@ -71,7 +77,7 @@ public class StageManager : Singleton<StageManager>
                     DisableVuforia();
                     printMsg("QR State Initialized");
 #if !UNITY_EDITOR
-                    GameObject scanner = Instantiate(QRScanner);
+                    qrscanner_aux = Instantiate(QRScanner);
 #endif
 #if UNITY_EDITOR
                     NextState();
@@ -82,11 +88,11 @@ public class StageManager : Singleton<StageManager>
                 #region PIANO CONNECTION STATE
                 case State.PianoConnection:
 #if !UNITY_EDITOR
-                    Destroy(QRScanner);
+                    Destroy(qrscanner_aux);
 #endif
                     printMsg("PianoConnection State Initialized");
-                        GameObject driver = Instantiate(PianoDriver);
-                        driver.name = driver.transform.name.Replace("(Clone)", "");
+                    driver_aux = Instantiate(PianoDriver);
+                    driver_aux.name = driver_aux.transform.name.Replace("(Clone)", "");
                     break;
                 #endregion
                 #region GAME STARTS STATE
