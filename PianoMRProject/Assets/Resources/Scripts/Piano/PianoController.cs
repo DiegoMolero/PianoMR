@@ -25,8 +25,8 @@ public class PianoController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+            GameObject.FindGameObjectWithTag("PianoDriver").GetComponent<PianoDriver>().pianoEvent.AddListener(PianoActionRecieved);
+    }
 	
 	// Update is called once per frame
 	void Update () {

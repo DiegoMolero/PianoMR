@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class PianoMessageEvent : UnityEvent<string>
+public class PianoEventKey : UnityEvent<int, bool>
 {
 
 }

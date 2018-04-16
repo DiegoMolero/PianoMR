@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PianoDriver : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class PianoDriver : MonoBehaviour {
 
     public GameObject HololensConnection;
     public GameObject UnityConnection;
+    public PianoEventKey pianoEvent;
 
     public void RecievePianoData(string data)
     {
@@ -31,7 +33,7 @@ public class PianoDriver : MonoBehaviour {
         //Send the key pressed to the piano controller
         try
         {
-            GameObject.FindGameObjectWithTag("Piano").GetComponent<PianoController>().PianoActionRecieved(key_value, aux_activate);
+            pianoEvent.Invoke(key_value,aux_activate);
         }
         catch (Exception e)
         {
@@ -41,6 +43,7 @@ public class PianoDriver : MonoBehaviour {
 
     public void Awake()
     {
+        pianoEvent = new PianoEventKey();
 #if UNITY_EDITOR
         GameObject aux = Instantiate(UnityConnection, transform);
         aux.name = aux.transform.name.Replace("(Clone)", "");
