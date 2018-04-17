@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 4145369569402606}
   - component: {fileID: 33678120993751652}
   - component: {fileID: 65820484353251418}
+  - component: {fileID: 114386846948066132}
   m_Layer: 0
   m_Name: PianoVuforia
   m_TagString: Piano
@@ -231,7 +232,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4591636609800882}
-  - component: {fileID: 114282401778772248}
   m_Layer: 0
   m_Name: PianoTarget
   m_TagString: Untagged
@@ -355,8 +355,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1571883341684376}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.096, z: 0}
-  m_LocalScale: {x: 1, y: 0.125, z: 0.8928572}
+  m_LocalPosition: {x: 0.13, y: -0.096, z: 0}
+  m_LocalScale: {x: 1.05, y: 0.125, z: 0.8928572}
   m_Children:
   - {fileID: 4678999156783306}
   - {fileID: 4557349599764710}
@@ -499,7 +499,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1613399953325260}
   m_LocalRotation: {x: 0.02225109, y: 0, z: 0, w: 0.9997524}
-  m_LocalPosition: {x: -0.139, y: -0.035, z: 0}
+  m_LocalPosition: {x: -0.178, y: -0.069, z: 0}
   m_LocalScale: {x: 0.67, y: 0.67, z: 0.67}
   m_Children:
   - {fileID: 4814807826209400}
@@ -554,7 +554,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1537354121425366}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.062, z: -0.81900007}
+  m_LocalPosition: {x: 0.169, y: -0.062, z: -0.81900007}
   m_LocalScale: {x: 0.29761907, y: 0.29761907, z: 0.29761907}
   m_Children:
   - {fileID: 4574185628619190}
@@ -1514,12 +1514,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a917f0af64a6423093132dab321c15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114282401778772248
+--- !u!114 &114386846948066132
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1613399953325260}
+  m_GameObject: {fileID: 1571883341684376}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1384ada636b8dd4584a933730324eec, type: 3}

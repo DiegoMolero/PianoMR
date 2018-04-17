@@ -322,7 +322,7 @@ Prefab:
     - target: {fileID: 114194278075887296, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
         type: 2}
       propertyPath: AppState
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114194278075887296, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
         type: 2}
