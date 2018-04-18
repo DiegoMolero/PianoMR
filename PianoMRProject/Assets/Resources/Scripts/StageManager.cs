@@ -14,26 +14,37 @@ public class StageManager : Singleton<StageManager>
         QRScan = 3, //Scanning QR Ip 
         PianoConnection= 4,//Initializing TCP connection
         VuforiaPiano = 5,//Detecting piano board with vuforia
-        GameInitialization =6//Starting the game
+        GameInitialization =6,//Starting the game
+        MenuGame = 7 //The piano displays a menu for choosing the level
     };
     public State AppState= State.AppInitialized;
     private State PreviousState;
 
     public TextMesh InfoText = null;
-
+    [Header("Splashes State")]
     public GameObject Splashes;
+    [Header("QR Scanner State")]
     public GameObject QRScanner;
+    [Header("Piano Connection State")]
     public GameObject PianoDriver;
+    public string IpAdrress = null;
+    [Header("Vuforia Scanner State")]
     public GameObject ImagePianoTarget;
+    public GameObject VuforiaIntructions;
+    [Header("Game Initialization State")]
     public GameObject Piano;
+    [Header("Menu Game State")]
+    public GameObject Menu;
 
     private GameObject splahes_aux;
     private GameObject driver_aux;
     private GameObject qrscanner_aux;
+    private GameObject vuforiainstructions_aux;
     private GameObject pianotarget_aux;
     private GameObject piano_aux;
+    private GameObject menu_aux;
 
-    public string IpAdrress = null;
+
     // Use this for initialization
     protected override void Awake()
     { 
@@ -93,22 +104,44 @@ public class StageManager : Singleton<StageManager>
                 #region VUFORIA PIANO STATE
                 case State.VuforiaPiano:
                     printMsg("Vuforia Piano State Initializaed");
+#if !UNITY_EDITOR
+                    vuforiainstructions_aux = Instantiate(VuforiaIntructions);
+                    vuforiainstructions_aux.name = vuforiainstructions_aux.transform.name.Replace("(Clone)", "");
                     pianotarget_aux = Instantiate(ImagePianoTarget);
                     pianotarget_aux.name = pianotarget_aux.transform.name.Replace("(Clone)", "");
                     EnableVuforia();
-                    /*
-                    piano_aux = Instantiate(Piano);
-                    piano_aux.name = piano_aux.transform.name.Replace("(Clone)", "");*/
-                    //NextState();
+#endif
+#if UNITY_EDITOR
+                    NextState();
+#endif
                     break;
-                #endregion
+#endregion
                 #region GAME STARTS STATE
                 case State.GameInitialization:
+                    printMsg("Game Initializaed");
+#if !UNITY_EDITOR
                     DisableVuforia();
                     Destroy(pianotarget_aux);
-                    printMsg("Game Initializaed");
+                    Destroy(vuforiainstructions_aux);
+#endif
+#if UNITY_EDITOR
+                    piano_aux = Instantiate(Piano);
+                    piano_aux.name = piano_aux.transform.name.Replace("(Clone)", "");
+                    piano_aux.transform.position = new Vector3(0, -0.14f, 0.49f);
+                    NextState();
+#endif
                     break;
-                #endregion
+#endregion
+#region MENU STATE
+                case State.MenuGame:
+                    printMsg("Menu State");
+                    menu_aux = Instantiate(Menu);
+                    menu_aux.name = menu_aux.transform.name.Replace("(Clone)", "");
+                    menu_aux.transform.position = piano_aux.transform.position;
+                    menu_aux.transform.rotation = piano_aux.transform.rotation;
+                    break;
+                    
+#endregion
             }
         }
 	}
@@ -119,7 +152,7 @@ public class StageManager : Singleton<StageManager>
         Debug.Log(msg);
         this.InfoText.text = msg;
     }
-    #region STATE MANAGERS FUNCTIONS
+#region STATE MANAGERS FUNCTIONS
     public void ChangeState(State aux)
     {
         PreviousState = AppState;
@@ -131,8 +164,8 @@ public class StageManager : Singleton<StageManager>
         AppState = AppState + 1;
     }
 
-    #endregion
-    #region VUFORIA MANAGERS FUNCTIONS
+#endregion
+#region VUFORIA MANAGERS FUNCTIONS
     public void DisableVuforia()
     {
         Camera.main.GetComponent<VuforiaBehaviour>().enabled = false;
@@ -144,6 +177,6 @@ public class StageManager : Singleton<StageManager>
         Camera.main.GetComponent<VuforiaBehaviour>().enabled = true;
         VuforiaRuntime.Instance.InitVuforia();
     }
-    #endregion
+#endregion
 
 }

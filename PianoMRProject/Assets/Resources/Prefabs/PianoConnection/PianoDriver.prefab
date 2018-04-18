@@ -177,6 +177,11 @@ MonoBehaviour:
     type: 2}
   UnityConnection: {fileID: 1340134039915968, guid: 363aa1bbeba13f0468e3e35d1509271b,
     type: 2}
+  pianoEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: PianoEventKey, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114822483322923626
 MonoBehaviour:
   m_ObjectHideFlags: 1
