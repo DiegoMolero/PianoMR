@@ -13,13 +13,30 @@ public class PianoDriver : MonoBehaviour {
     public GameObject UnityConnection;
     public PianoEventKey pianoEvent;
 
+    //Indicates the note of the key pressed
+    public enum KeyNote
+    {
+        DO = 60,
+        DO_A = 61,
+        RE = 62,
+        RE_A = 63,
+        MI = 64,
+        FA = 65,
+        FA_A = 66,
+        SOL = 67,
+        SOL_A = 68,
+        LA = 69,
+        LA_A = 70,
+        SI = 71,
+        DO2 = 72
+    };
+
     public void RecievePianoData(string data)
     {
         string[] data_fragmented;
         bool aux_activate;
         int key_value;
         if (tm != null) tm.text = data;
-        Debug.Log("Event recieving: " + data);
         data_fragmented = data.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
         //Parse the hexadecimal value into int
         key_value = int.Parse(data_fragmented[1], System.Globalization.NumberStyles.HexNumber);
@@ -33,7 +50,7 @@ public class PianoDriver : MonoBehaviour {
         //Send the key pressed to the piano controller
         try
         {
-            pianoEvent.Invoke(key_value,aux_activate);
+            pianoEvent.Invoke((KeyNote)key_value,aux_activate);
         }
         catch (Exception e)
         {
@@ -48,7 +65,15 @@ public class PianoDriver : MonoBehaviour {
         GameObject aux = Instantiate(UnityConnection, transform);
         aux.name = aux.transform.name.Replace("(Clone)", "");
         aux.GetComponent<PianoUnitySimulator>().setPianoDriver(this);
-        GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().NextState();
+        try
+        {
+            GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().NextState();
+        }
+        catch (Exception e)
+        {
+
+        }
+
 #endif
 #if !UNITY_EDITOR
         GameObject aux = Instantiate(HololensConnection, transform);

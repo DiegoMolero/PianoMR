@@ -8,16 +8,17 @@ public class StageManager : Singleton<StageManager>
 {
     public enum State
     {
-        None= 0,//Null State
-        AppInitialized= 1,//App Started
-        SplashesView= 2, //Show the splashes
+        None = 0,//Null State
+        AppInitialized = 1,//App Started
+        SplashesView = 2, //Show the splashes
         QRScan = 3, //Scanning QR Ip 
-        PianoConnection= 4,//Initializing TCP connection
+        PianoConnection = 4,//Initializing TCP connection
         VuforiaPiano = 5,//Detecting piano board with vuforia
-        GameInitialization =6,//Starting the game
-        MenuGame = 7 //The piano displays a menu for choosing the level
+        GameInitialization = 6,//Starting the game
+        MenuGame = 7, //The piano displays a menu for choosing the level
+        Playing = 8 //When a level is load and the user is playing it
     };
-    public State AppState= State.AppInitialized;
+    public State AppState;
     private State PreviousState;
 
     public TextMesh InfoText = null;
@@ -64,6 +65,11 @@ public class StageManager : Singleton<StageManager>
             PreviousState = AppState;
             switch (AppState)
             {
+                #region NONE STATE
+                case State.None:
+                    printMsg("NONE");
+                    break;
+                #endregion
                 #region APP INITIALATION STATE
                 case State.AppInitialized:
                     printMsg("App Initialized");
@@ -127,12 +133,12 @@ public class StageManager : Singleton<StageManager>
 #if UNITY_EDITOR
                     piano_aux = Instantiate(Piano);
                     piano_aux.name = piano_aux.transform.name.Replace("(Clone)", "");
-                    piano_aux.transform.position = new Vector3(0, -0.14f, 0.49f);
+                    piano_aux.transform.position = new Vector3(0, -0.14f, 0.32f);
                     NextState();
 #endif
                     break;
 #endregion
-#region MENU STATE
+                #region MENU STATE
                 case State.MenuGame:
                     printMsg("Menu State");
                     menu_aux = Instantiate(Menu);
@@ -140,8 +146,13 @@ public class StageManager : Singleton<StageManager>
                     menu_aux.transform.position = piano_aux.transform.position;
                     menu_aux.transform.rotation = piano_aux.transform.rotation;
                     break;
-                    
-#endregion
+                #endregion
+                #region PLAYING STATE
+                case State.Playing:
+                    printMsg("Playing State");
+                    Destroy(menu_aux);
+                    break;
+                    #endregion
             }
         }
 	}

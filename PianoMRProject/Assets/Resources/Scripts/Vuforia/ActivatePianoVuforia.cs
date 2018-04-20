@@ -13,12 +13,12 @@ public class ActivatePianoVuforia : MonoBehaviour
         GameObject.FindGameObjectWithTag("PianoDriver").GetComponent<PianoDriver>().pianoEvent.AddListener(PianoActionRecieved);
     }
 
-    public void PianoActionRecieved(int key, bool action)
+    public void PianoActionRecieved(PianoDriver.KeyNote key, bool action)
     {
 
         if (this.isActiveAndEnabled)
         {
-            if (key == 67 && action == false)
+            if (key == PianoDriver.KeyNote.SOL && action == false)
             {
                 GameObject aux = Instantiate(piano);
                 aux.name = aux.transform.name.Replace("(Clone)", "");

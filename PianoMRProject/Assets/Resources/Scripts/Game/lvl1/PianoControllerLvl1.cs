@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PianoControllerLvl1 : MonoBehaviour {
+public class PianoController : MonoBehaviour {
     public GameObject _DO,_DO_A,_RE,_RE_A,_MI,_FA,_FA_A,_SOL,_SOL_A,_LA,_LA_A,_SI,_DO2;
     public Hashtable keys = new Hashtable();
 
@@ -40,7 +40,7 @@ public class PianoControllerLvl1 : MonoBehaviour {
         {
             //Debug.Log(key + " " + action);
             GameObject aux = (GameObject)keys[key];
-            aux.GetComponent<ActivatorNote>().ActionRecieved(action);
+            aux.GetComponent<PianoKey>().ActionRecieved(action);
         }
         catch (Exception e) {
 

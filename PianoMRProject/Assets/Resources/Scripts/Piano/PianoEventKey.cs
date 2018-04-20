@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class PianoEventKey : UnityEvent<int, bool>
+public class PianoEventKey : UnityEvent<PianoDriver.KeyNote, bool>
 {
 
 }

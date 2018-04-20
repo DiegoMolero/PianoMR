@@ -7,6 +7,8 @@ TagManager:
   - PianoDriver
   - Piano
   - AppManager
+  - Note
+  - Triggers
   layers:
   - Default
   - TransparentFX
