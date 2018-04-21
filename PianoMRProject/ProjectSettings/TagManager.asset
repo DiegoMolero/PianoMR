@@ -9,6 +9,7 @@ TagManager:
   - AppManager
   - Note
   - Triggers
+  - MusicSheet
   layers:
   - Default
   - TransparentFX

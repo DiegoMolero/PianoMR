@@ -9,34 +9,39 @@ public class NotesManager : MonoBehaviour
 
     public GameObject note;
 
-    [Header("Song Values")]
-    public int Tempo;   //Beats Per Minute
-    public int TotalMeasures; //Compases totales
-    public int BeatsPerMeasure; //Numer of quarters per Measure - Numero de negras por compás
-
+    //Song values
+    private int Tempo;   //Beats Per Minute
+    private int TotalMeasures; //Compases totales
+    private int BeatsPerMeasure; //Numer of quarters per Measure - Numero de negras por compás
 
     [Header("Info Values")]
     public int actualMeasure;
     public int actualBeat;
-
+    [Header("Song that will be played")]
+    public MusicSheet musicSheet;
     private float tempoSong;
     private float auxTimer;
     private float speed;
+    private Vector3 aux_position;
+
 
     private void Awake()
     {
         position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
         position += GameObject.FindGameObjectWithTag("Triggers").GetComponent<Transform>().position;
-
+        aux_position = position+ new Vector3(0f, 0.6f, 0f);
     }
     // Use this for initialization
     void Start()
     {
+        Tempo = musicSheet.Tempo;
+        TotalMeasures = musicSheet.TotalMeasures;
+        BeatsPerMeasure = musicSheet.BeatsPerMeasure;
         actualBeat = 1;
         actualMeasure = 1;
         tempoSong = 60f/Tempo;
         auxTimer = Timer;
-        this.speed = -0.0945f * (Tempo / 60);
+        this.speed = -0.0945f * (Tempo / 60f);
     }
 
     // Update is called once per frame
@@ -61,8 +66,8 @@ public class NotesManager : MonoBehaviour
     }
     private void UpdateBeat()
     {
-        actualBeat++;
         InvokeNote();
+        actualBeat++;
         if (actualBeat > BeatsPerMeasure)
         {
             UpdateMeasure();
@@ -80,17 +85,16 @@ public class NotesManager : MonoBehaviour
 
     private void InvokeNote()
     {
-        Vector3 aux_position = GameObject.FindGameObjectWithTag("Triggers").GetComponent<Transform>().position + new Vector3(0f, 0.6f, 0f);
-        GameObject aux = Instantiate(note);
-        aux.name = aux.transform.name.Replace("(Clone)", "");
-        Note aux_note = aux.AddComponent<Note>();
-        aux_note.Initialize(PianoDriver.KeyNote.DO, aux_position, speed);
-        Destroy(aux, tempoSong * 7); 
-        /*
-        GameObject aux = Instantiate(note);
-        aux.name = aux.transform.name.Replace("(Clone)", "");
-        aux.transform.position = GameObject.FindGameObjectWithTag("Triggers").GetComponent<Transform>().position + new Vector3(0f,0.3f,0f);
-        */
+        List<NoteMusicSheet> notes = musicSheet.getNotes(actualMeasure,actualBeat);
+        if (notes == null) return;
+        foreach (NoteMusicSheet note_musicsheet in notes)
+        {
+            GameObject aux = Instantiate(note);
+            aux.name = aux.transform.name.Replace("(Clone)", "");
+            Note aux_note = aux.AddComponent<Note>();
+            aux_note.Initialize(note_musicsheet.Note, aux_position, speed);
+            Destroy(aux, tempoSong * 7);
+        }
     }
 }
 
