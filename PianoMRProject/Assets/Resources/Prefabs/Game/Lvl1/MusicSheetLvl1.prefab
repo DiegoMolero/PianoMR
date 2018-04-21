@@ -51,6 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5574934d2cb71684f8460763d8d13979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Tempo: 60
+  TotalMeasures: 20
+  BeatsPerMeasure: 4
   notes:
   - Measure: 1
     Beat: 1

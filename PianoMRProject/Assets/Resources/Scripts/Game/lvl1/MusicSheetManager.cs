@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NotesManager : MonoBehaviour
+public class MusicSheetManager : MonoBehaviour
 {
     private Vector3 position;
     public float Timer = 0.0f;
@@ -17,13 +17,15 @@ public class NotesManager : MonoBehaviour
     [Header("Info Values")]
     public int actualMeasure;
     public int actualBeat;
+    public int actualScore;
     [Header("Song that will be played")]
     public MusicSheet musicSheet;
     private float tempoSong;
     private float auxTimer;
     private float speed;
     private Vector3 aux_position;
-
+    [Header("User Feedback")]
+    public TextMesh scoreText;
 
     private void Awake()
     {
@@ -42,6 +44,7 @@ public class NotesManager : MonoBehaviour
         tempoSong = 60f/Tempo;
         auxTimer = Timer;
         this.speed = -0.0945f * (Tempo / 60f);
+        actualScore = 0;
     }
 
     // Update is called once per frame
@@ -95,6 +98,13 @@ public class NotesManager : MonoBehaviour
             aux_note.Initialize(note_musicsheet.Note, aux_position, speed);
             Destroy(aux, tempoSong * 7);
         }
+    }
+
+    public void UpdateScore()
+    {
+        actualScore++;
+        float aux_score = (float)actualScore / (float)musicSheet.notes.Capacity * 100;
+        scoreText.text = "Score " + (int)aux_score + "%";
     }
 }
 

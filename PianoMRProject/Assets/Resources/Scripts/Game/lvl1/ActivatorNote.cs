@@ -50,9 +50,10 @@ public class ActivatorNote : MonoBehaviour {
     public void Press()
     {
         render.material = activate_material;
-        if (active)
+        if (active==true)
         {
             Destroy(note);
+            if(note != null)GameObject.FindGameObjectWithTag("SheetManager").GetComponent<MusicSheetManager>().UpdateScore();
         }
     }
 
