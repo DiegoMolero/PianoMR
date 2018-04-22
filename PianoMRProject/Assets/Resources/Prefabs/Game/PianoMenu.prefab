@@ -220,6 +220,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976dc9bbc6a2e714493b5bedf77f4296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lvl1: {fileID: 1509708297232172, guid: 5eee7a532f65b8841b103a701dfc0b35, type: 2}
-  lvl1_instructions: {fileID: 1872771123493778, guid: 992465484ab96d04888b4beae7cd292a,
-    type: 2}
+  lvl1: {fileID: 1872771123493778, guid: 992465484ab96d04888b4beae7cd292a, type: 2}

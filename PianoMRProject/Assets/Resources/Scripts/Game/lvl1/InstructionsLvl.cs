@@ -21,11 +21,10 @@ public class InstructionsLvl : MonoBehaviour {
             txt.text = "Starts in \n" + aux_timer;
             if (aux_timer == 0)
             {
-                /*
-                GameObject aux = Instantiate(game);
-                aux.name = aux.transform.name.Replace("(Clone)", "");
-                */
-                game.SetActive(true);
+                GameObject lvl_aux = Instantiate(game);
+                lvl_aux.name = lvl_aux.transform.name.Replace("(Clone)", "");
+                lvl_aux.transform.position = this.transform.position;
+                lvl_aux.transform.rotation = this.transform.rotation;
                 Destroy(this.gameObject);
             }
         }
