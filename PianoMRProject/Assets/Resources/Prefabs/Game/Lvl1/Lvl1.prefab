@@ -868,6 +868,7 @@ MonoBehaviour:
   actualScore: 0
   musicSheet: {fileID: 114897861857081068}
   scoreText: {fileID: 102209383808126566}
+  lvl_ends: {fileID: 1309618079386534, guid: a66ac72a193c25f4aa2cea5e0339e639, type: 2}
 --- !u!114 &114768277990358304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -906,7 +907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tempo: 60
-  TotalMeasures: 20
+  TotalMeasures: 6
   BeatsPerMeasure: 4
   notes:
   - Measure: 1

@@ -26,6 +26,8 @@ public class MusicSheetManager : MonoBehaviour
     private Vector3 aux_position;
     [Header("User Feedback")]
     public TextMesh scoreText;
+    [Header("Prefab loads when the game ends")]
+    public GameObject lvl_ends;
 
     private void Awake()
     {
@@ -83,6 +85,12 @@ public class MusicSheetManager : MonoBehaviour
         if(actualMeasure > TotalMeasures)
         {
             Debug.Log("FIN");
+            GameObject lvl_aux = Instantiate(lvl_ends);
+            lvl_aux.GetComponent<FinalResult>().scoreObtained = (int)((float)actualScore / (float)musicSheet.notes.Capacity * 100);
+            lvl_aux.name = lvl_aux.transform.name.Replace("(Clone)", "");
+            lvl_aux.transform.position = this.transform.position;
+            lvl_aux.transform.rotation = this.transform.rotation;
+            Destroy(this.transform.parent.gameObject);
         }
     }
 
@@ -100,9 +108,16 @@ public class MusicSheetManager : MonoBehaviour
         }
     }
 
-    public void UpdateScore()
+    public void IncreaseScore()
     {
         actualScore++;
+        float aux_score = (float)actualScore / (float)musicSheet.notes.Capacity * 100;
+        scoreText.text = "Score " + (int)aux_score + "%";
+    }
+
+    public void DecreaseScore()
+    {
+        actualScore--;
         float aux_score = (float)actualScore / (float)musicSheet.notes.Capacity * 100;
         scoreText.text = "Score " + (int)aux_score + "%";
     }

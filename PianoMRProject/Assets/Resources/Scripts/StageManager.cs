@@ -161,7 +161,7 @@ public class StageManager : Singleton<StageManager>
     private void printMsg(string msg)
     {
         Debug.Log(msg);
-        this.InfoText.text = msg;
+        //this.InfoText.text = msg;
     }
 #region STATE MANAGERS FUNCTIONS
     public void ChangeState(State aux)

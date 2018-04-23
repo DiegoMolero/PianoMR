@@ -53,7 +53,8 @@ public class ActivatorNote : MonoBehaviour {
         if (active==true)
         {
             Destroy(note);
-            if(note != null)GameObject.FindGameObjectWithTag("SheetManager").GetComponent<MusicSheetManager>().UpdateScore();
+            if(note != null)GameObject.FindGameObjectWithTag("SheetManager").GetComponent<MusicSheetManager>().IncreaseScore();
+            else GameObject.FindGameObjectWithTag("SheetManager").GetComponent<MusicSheetManager>().DecreaseScore();
         }
     }
 
