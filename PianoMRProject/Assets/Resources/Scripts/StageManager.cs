@@ -18,10 +18,12 @@ public class StageManager : Singleton<StageManager>
         MenuGame = 7, //The piano displays a menu for choosing the level
         Playing = 8 //When a level is load and the user is playing it
     };
+    [Header("App Info")]
     public State AppState;
     private State PreviousState;
-
     public TextMesh InfoText = null;
+    public bool AudioNotes = true;
+
     [Header("Splashes State")]
     public GameObject Splashes;
     [Header("QR Scanner State")]

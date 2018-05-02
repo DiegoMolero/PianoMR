@@ -5,11 +5,20 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour {
 
     public GameObject lvl1;
-
     private GameObject lvl_aux;
-	// Use this for initialization
-	void Start () {
+
+    public TextMesh audio_info;
+    // Use this for initialization
+    void Start () {
         GameObject.FindGameObjectWithTag("PianoDriver").GetComponent<PianoDriver>().pianoEvent.AddListener(PianoActionRecieved);
+        if (GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AudioNotes)
+        {
+            audio_info.text = "M\nU\nT\nE\n\nN\nO\nT\nE\nS";
+        }
+        else
+        {
+            audio_info.text = "\nU\nN\nM\nU\nT\nE\n\nN\nO\nT\nE\nS";
+        }
     }
 	
 	// Update is called once per frame
@@ -30,7 +39,18 @@ public class MenuManager : MonoBehaviour {
                     lvl_aux.transform.rotation = this.transform.rotation;
                     GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().NextState();
                     break;
-
+                case PianoDriver.KeyNote.DO2:
+                    if (GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AudioNotes)
+                    {
+                        GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AudioNotes = false;
+                        audio_info.text = "\nU\nN\nM\nU\nT\nE\n\nN\nO\nT\nE\nS";
+                    }
+                    else
+                    {
+                        GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AudioNotes = true;
+                        audio_info.text = "M\nU\nT\nE\n\nN\nO\nT\nE\nS";
+                    }
+                    break;
             }
         }
     }

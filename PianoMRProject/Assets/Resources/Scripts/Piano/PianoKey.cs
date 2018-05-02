@@ -9,9 +9,13 @@ public class PianoKey : MonoBehaviour {
     public Material  inactivate_material;
     [Tooltip("Changes to this material when the key is pressed")]
     public Material activate_material;
+    private AudioSource audio;
+    private bool audio_notes;
     // Use this for initialization
     void Start () {
         GetComponent<Renderer>().material = inactivate_material;
+        audio = GetComponent<AudioSource>();
+        audio_notes = GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AudioNotes;
     }
 	
 	// Update is called once per frame
@@ -28,6 +32,7 @@ public class PianoKey : MonoBehaviour {
     public void Press()
     {
         GetComponent<Renderer>().material = activate_material;
+        if(GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AudioNotes) audio.Play();
         activate = true;
     }
 
