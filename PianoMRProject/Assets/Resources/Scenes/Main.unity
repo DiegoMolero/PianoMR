@@ -350,47 +350,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114194278075887296, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
         type: 2}
-      propertyPath: MainCamera
+      propertyPath: ImagePianoTarget
       value: 
-      objectReference: {fileID: 1552850643}
-    - target: {fileID: 114194278075887296, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
-        type: 2}
-      propertyPath: Splashes
-      value: 
-      objectReference: {fileID: 1925793310478670, guid: 661eaf544b0aac042909f5ae6d05c5f1,
+      objectReference: {fileID: 1956716610277646, guid: 0f671d9e8cd53ee429d86fc545648b74,
         type: 2}
     - target: {fileID: 114194278075887296, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
         type: 2}
       propertyPath: AppState
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114194278075887296, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
-        type: 2}
-      propertyPath: ImagePianoTarget
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114194278075887296, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
-        type: 2}
-      propertyPath: Piano
-      value: 
-      objectReference: {fileID: 1769763100875504, guid: d80c39413db8ad942a053d08a776ad04,
-        type: 2}
-    - target: {fileID: 1666420562101152, guid: 9adf6485e2c1ee04ea6c6a85a9192005, type: 2}
-      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114194278075887296, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
-        type: 2}
-      propertyPath: VuforiaIntructions
-      value: 
-      objectReference: {fileID: 1947443517306428, guid: ba0f5248105de824fa3d3893cd6c0a83,
-        type: 2}
-    - target: {fileID: 114194278075887296, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
-        type: 2}
-      propertyPath: Menu
-      value: 
-      objectReference: {fileID: 1839438912407066, guid: c7aba261a11c83a45b49e46946ffd2f1,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9adf6485e2c1ee04ea6c6a85a9192005, type: 2}
   m_IsPrefabParent: 0
