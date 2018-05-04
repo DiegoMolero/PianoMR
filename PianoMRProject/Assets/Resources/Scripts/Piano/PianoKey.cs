@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PianoKey : MonoBehaviour {
     [Tooltip("indicates if the key is being pressed or not")]
-    public bool activate = false;
+    public bool Activate = false;
     [Tooltip("Is the material of the key by defult, when the key is not pressed")]
     public Material  inactivate_material;
     [Tooltip("Changes to this material when the key is pressed")]
-    public Material activate_material;
+    public Material Hit_material;
+    public Material Miss_material;
+    public Material Press_material;
     private AudioSource audio;
     private bool audio_notes;
     // Use this for initialization
@@ -31,14 +33,22 @@ public class PianoKey : MonoBehaviour {
 
     public void Press()
     {
-        GetComponent<Renderer>().material = activate_material;
         if(GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AudioNotes) audio.Play();
-        activate = true;
+        if (GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AppState != StageManager.State.Playing) GetComponent<Renderer>().material = Press_material;
+        Activate = true;
     }
 
     public void Release()
     {
-        activate = false;
+        Activate = false;
         GetComponent<Renderer>().material = inactivate_material;
+    }
+    public void PressHit()
+    {
+        GetComponent<Renderer>().material = Hit_material;
+    }
+    public void PressMiss()
+    {
+        GetComponent<Renderer>().material = Miss_material;
     }
 }

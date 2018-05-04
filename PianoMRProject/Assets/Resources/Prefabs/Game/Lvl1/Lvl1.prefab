@@ -2353,6 +2353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88154094e079be747a5c487c19eeb921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KeyNote: 62
   inactivate_material: {fileID: 2100000, guid: 6c72e9a56efb6ae449d4a0e9796dbe4d, type: 2}
   activate_material: {fileID: 2100000, guid: e31da0279f576ab44bba2f311c9d5c7a, type: 2}
 --- !u!114 &114255131524080406
@@ -2366,6 +2367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88154094e079be747a5c487c19eeb921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KeyNote: 64
   inactivate_material: {fileID: 2100000, guid: 6c72e9a56efb6ae449d4a0e9796dbe4d, type: 2}
   activate_material: {fileID: 2100000, guid: e31da0279f576ab44bba2f311c9d5c7a, type: 2}
 --- !u!114 &114335063014118378
@@ -2379,6 +2381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88154094e079be747a5c487c19eeb921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KeyNote: 65
   inactivate_material: {fileID: 2100000, guid: 6c72e9a56efb6ae449d4a0e9796dbe4d, type: 2}
   activate_material: {fileID: 2100000, guid: e31da0279f576ab44bba2f311c9d5c7a, type: 2}
 --- !u!114 &114342044295893622
@@ -2436,6 +2439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88154094e079be747a5c487c19eeb921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KeyNote: 69
   inactivate_material: {fileID: 2100000, guid: 093cfba96eabff749b6cd002b0a40f9e, type: 2}
   activate_material: {fileID: 2100000, guid: f1b05189fb0ca0f4a85824e5a8a71a7c, type: 2}
 --- !u!114 &114788705375330872
@@ -2449,6 +2453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88154094e079be747a5c487c19eeb921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KeyNote: 67
   inactivate_material: {fileID: 2100000, guid: 6c72e9a56efb6ae449d4a0e9796dbe4d, type: 2}
   activate_material: {fileID: 2100000, guid: e31da0279f576ab44bba2f311c9d5c7a, type: 2}
 --- !u!114 &114897861857081068
@@ -2545,6 +2550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88154094e079be747a5c487c19eeb921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KeyNote: 60
   inactivate_material: {fileID: 2100000, guid: 6c72e9a56efb6ae449d4a0e9796dbe4d, type: 2}
   activate_material: {fileID: 2100000, guid: e31da0279f576ab44bba2f311c9d5c7a, type: 2}
 --- !u!135 &135296204118410774
