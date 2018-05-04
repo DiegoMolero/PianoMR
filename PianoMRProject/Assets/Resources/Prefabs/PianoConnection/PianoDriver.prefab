@@ -172,7 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec80779a5e114a942be4c50e50e0684f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tm: {fileID: 102757796499451964}
   HololensConnection: {fileID: 1056640220440178, guid: c3cc7f282786b6a498600d53f78e9d1d,
     type: 2}
   UnityConnection: {fileID: 1340134039915968, guid: 363aa1bbeba13f0468e3e35d1509271b,

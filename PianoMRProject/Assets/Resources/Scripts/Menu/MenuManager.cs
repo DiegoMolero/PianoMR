@@ -35,8 +35,8 @@ public class MenuManager : MonoBehaviour {
                 case PianoDriver.KeyNote.DO:
                     lvl_aux = Instantiate(lvl1);
                     lvl_aux.name = lvl_aux.transform.name.Replace("(Clone)", "");
-                    lvl_aux.transform.position = this.transform.position;
-                    lvl_aux.transform.rotation = this.transform.rotation;
+                    lvl_aux.transform.position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
+                    lvl_aux.transform.rotation = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().rotation;
                     GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().NextState();
                     break;
                 case PianoDriver.KeyNote.DO2:

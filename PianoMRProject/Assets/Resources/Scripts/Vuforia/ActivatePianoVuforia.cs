@@ -24,8 +24,8 @@ public class ActivatePianoVuforia : MonoBehaviour
                 aux.name = aux.transform.name.Replace("(Clone)", "");
                 aux.transform.position = this.transform.position;
                 aux.transform.rotation = this.transform.rotation;
-                aux.transform.localScale = this.transform.localScale;
                 GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().NextState();
+
             }
         }
 

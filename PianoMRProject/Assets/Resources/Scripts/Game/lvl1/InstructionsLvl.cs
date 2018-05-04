@@ -23,8 +23,8 @@ public class InstructionsLvl : MonoBehaviour {
             {
                 GameObject lvl_aux = Instantiate(game);
                 lvl_aux.name = lvl_aux.transform.name.Replace("(Clone)", "");
-                lvl_aux.transform.position = this.transform.position;
-                lvl_aux.transform.rotation = this.transform.rotation;
+                lvl_aux.transform.position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
+                lvl_aux.transform.rotation = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().rotation;
                 Destroy(this.gameObject);
             }
         }

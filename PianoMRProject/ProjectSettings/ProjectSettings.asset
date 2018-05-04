@@ -530,7 +530,7 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: PianoMRProject
-  metroPackageVersion: 1.0.0.0
+  metroPackageVersion: 2.0.0.0
   metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
@@ -538,7 +538,7 @@ PlayerSettings:
   metroCertificateNotAfter: 00357df6e8d8d401
   metroApplicationDescription: PianoMRProject
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: PianoMRProject
   metroCommandLineArgsFile: 
   metroTileShowName: 0
   metroMediumTileShowName: 0

@@ -58,51 +58,68 @@ MonoBehaviour:
   - Measure: 1
     Beat: 1
     Note: 60
+    Finger: 1
   - Measure: 1
     Beat: 2
     Note: 62
+    Finger: 2
   - Measure: 1
     Beat: 3
     Note: 64
+    Finger: 3
   - Measure: 1
     Beat: 4
     Note: 65
+    Finger: 4
   - Measure: 2
     Beat: 1
     Note: 67
+    Finger: 5
   - Measure: 2
     Beat: 2
     Note: 65
+    Finger: 4
   - Measure: 2
     Beat: 3
     Note: 64
+    Finger: 3
   - Measure: 2
     Beat: 4
     Note: 62
+    Finger: 2
   - Measure: 3
     Beat: 1
     Note: 60
+    Finger: 1
   - Measure: 3
     Beat: 2
     Note: 64
+    Finger: 3
   - Measure: 3
     Beat: 5
     Note: 67
+    Finger: 5
   - Measure: 3
     Beat: 4
     Note: 64
+    Finger: 3
   - Measure: 4
     Beat: 1
     Note: 60
+    Finger: 1
   - Measure: 3
     Beat: 2
     Note: 67
+    Finger: 5
   - Measure: 3
     Beat: 2
     Note: 65
+    Finger: 4
   - Measure: 3
     Beat: 2
     Note: 62
+    Finger: 2
   - Measure: 3
     Beat: 2
     Note: 60
+    Finger: 1

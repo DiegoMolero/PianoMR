@@ -23,17 +23,17 @@ public class MusicSheetManager : MonoBehaviour
     private float tempoSong;
     private float auxTimer;
     private float speed;
+    public float initPositionNotes;
     private Vector3 aux_position;
     [Header("User Feedback")]
     public TextMesh scoreText;
     [Header("Prefab loads when the game ends")]
     public GameObject lvl_ends;
 
+
     private void Awake()
     {
-        position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
-        position += GameObject.FindGameObjectWithTag("Triggers").GetComponent<Transform>().position;
-        aux_position = position+ new Vector3(0f, 0.6f, 0f);
+
     }
     // Use this for initialization
     void Start()
@@ -88,8 +88,8 @@ public class MusicSheetManager : MonoBehaviour
             GameObject lvl_aux = Instantiate(lvl_ends);
             lvl_aux.GetComponent<FinalResult>().scoreObtained = (int)((float)actualScore / (float)musicSheet.notes.Capacity * 100);
             lvl_aux.name = lvl_aux.transform.name.Replace("(Clone)", "");
-            lvl_aux.transform.position = this.transform.position;
-            lvl_aux.transform.rotation = this.transform.rotation;
+            lvl_aux.transform.position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
+            lvl_aux.transform.rotation = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().rotation;
             Destroy(this.transform.parent.gameObject);
         }
     }
@@ -100,11 +100,10 @@ public class MusicSheetManager : MonoBehaviour
         if (notes == null) return;
         foreach (NoteMusicSheet note_musicsheet in notes)
         {
-            GameObject aux = Instantiate(note);
+            GameObject aux = Instantiate(note, GameObject.FindGameObjectWithTag("Triggers").GetComponent<Transform>());
             aux.name = aux.transform.name.Replace("(Clone)", "");
-            Note aux_note = aux.AddComponent<Note>();
-            aux_note.Initialize(note_musicsheet.Note, aux_position, speed);
-            Destroy(aux, tempoSong * 7);
+            aux.GetComponent<Note>().Initialize(note_musicsheet.Note, initPositionNotes, speed, note_musicsheet.Finger);
+            Destroy(aux, tempoSong * 8);
         }
     }
 

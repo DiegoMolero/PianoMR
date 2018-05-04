@@ -5,10 +5,6 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class PianoDriver : MonoBehaviour {
-
-
-    public TextMesh tm = null;
-
     public GameObject HololensConnection;
     public GameObject UnityConnection;
     public PianoEventKey pianoEvent;
@@ -36,7 +32,6 @@ public class PianoDriver : MonoBehaviour {
         string[] data_fragmented;
         bool aux_activate;
         int key_value;
-        if (tm != null) tm.text = data;
         data_fragmented = data.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
         //Parse the hexadecimal value into int
         key_value = int.Parse(data_fragmented[1], System.Globalization.NumberStyles.HexNumber);
@@ -65,14 +60,7 @@ public class PianoDriver : MonoBehaviour {
         GameObject aux = Instantiate(UnityConnection, transform);
         aux.name = aux.transform.name.Replace("(Clone)", "");
         aux.GetComponent<PianoUnitySimulator>().setPianoDriver(this);
-        try
-        {
-            GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().NextState();
-        }
-        catch (Exception e)
-        {
-
-        }
+        GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().NextState();
 
 #endif
 #if !UNITY_EDITOR

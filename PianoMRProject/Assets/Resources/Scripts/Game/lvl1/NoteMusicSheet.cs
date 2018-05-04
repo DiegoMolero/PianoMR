@@ -8,4 +8,5 @@ public class NoteMusicSheet {
     public int Measure;
     public int Beat;
     public PianoDriver.KeyNote Note;
+    public int Finger;
 }

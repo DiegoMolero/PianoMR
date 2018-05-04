@@ -135,9 +135,9 @@ public class StageManager : Singleton<StageManager>
 #if UNITY_EDITOR
                     piano_aux = Instantiate(Piano);
                     piano_aux.name = piano_aux.transform.name.Replace("(Clone)", "");
-                    piano_aux.transform.position = new Vector3(0, -0.14f, 0.32f);
-                    NextState();
+                    piano_aux.transform.position = new Vector3(0, -0.14f, 0.52f);
 #endif
+                    NextState();
                     break;
 #endregion
                 #region MENU STATE
@@ -145,8 +145,8 @@ public class StageManager : Singleton<StageManager>
                     printMsg("Menu State");
                     menu_aux = Instantiate(Menu);
                     menu_aux.name = menu_aux.transform.name.Replace("(Clone)", "");
-                    menu_aux.transform.position = piano_aux.transform.position;
-                    menu_aux.transform.rotation = piano_aux.transform.rotation;
+                    menu_aux.transform.position = GameObject.FindGameObjectWithTag("Piano").transform.position;
+                    menu_aux.transform.rotation = GameObject.FindGameObjectWithTag("Piano").transform.rotation;
                     break;
                 #endregion
                 #region PLAYING STATE
@@ -163,7 +163,11 @@ public class StageManager : Singleton<StageManager>
     private void printMsg(string msg)
     {
         Debug.Log(msg);
-        //this.InfoText.text = msg;
+        this.InfoText.text = msg;
+    }
+    public void SetPiano(GameObject piano)
+    {
+        piano_aux = piano;
     }
 #region STATE MANAGERS FUNCTIONS
     public void ChangeState(State aux)

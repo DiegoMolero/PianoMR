@@ -362,14 +362,13 @@ Prefab:
     - target: {fileID: 114194278075887296, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
         type: 2}
       propertyPath: AppState
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114194278075887296, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
         type: 2}
       propertyPath: ImagePianoTarget
       value: 
-      objectReference: {fileID: 1956716610277646, guid: 0f671d9e8cd53ee429d86fc545648b74,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 114194278075887296, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
         type: 2}
       propertyPath: Piano
