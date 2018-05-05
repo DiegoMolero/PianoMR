@@ -16,6 +16,7 @@ public class Note : MonoBehaviour {
     {
         this.transform.position += new Vector3(0,initPosition,0);//* this.GetComponent<Transform>().up.normalized;
         this.transform.position += positionNote(target);
+        this.transform.rotation = Quaternion.LookRotation(this.transform.forward.normalized);
         rb.velocity = new Vector3(0, speed, 0);
         Target = target;
         this.speed = speed;
