@@ -188,22 +188,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1423868531045418
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4326864907128324}
-  - component: {fileID: 114897861857081068}
-  m_Layer: 0
-  m_Name: MusicSheetLvl1
-  m_TagString: MusicSheet
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1444425474021916
 GameObject:
   m_ObjectHideFlags: 1
@@ -390,7 +374,7 @@ Transform:
   - {fileID: 4129433893400428}
   - {fileID: 4056698660449892}
   m_Father: {fileID: 4898409893341004}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4094361124346206
 Transform:
@@ -457,19 +441,6 @@ Transform:
   - {fileID: 4094361124346206}
   m_Father: {fileID: 4677453234531304}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4326864907128324
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1423868531045418}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4898409893341004}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4360810311285730
 Transform:
@@ -555,7 +526,7 @@ Transform:
   - {fileID: 4900207129703576}
   - {fileID: 4377224962836352}
   m_Father: {fileID: 4898409893341004}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -85.31, y: 0, z: 0}
 --- !u!4 &4677453234531304
 Transform:
@@ -621,7 +592,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4677453234531304}
-  - {fileID: 4326864907128324}
   - {fileID: 4085652942440486}
   - {fileID: 4599780976120376}
   m_Father: {fileID: 0}
@@ -1476,8 +1446,8 @@ MonoBehaviour:
   actualMeasure: 0
   actualBeat: 0
   actualScore: 0
-  musicSheet: {fileID: 114897861857081068}
-  initPositionNotes: 0.4
+  musicSheet: {fileID: 114530734903332694, guid: 983e4c46177305c4aa77f66e3eea5f4a,
+    type: 2}
   scoreText: {fileID: 102209383808126566}
   lvl_ends: {fileID: 1309618079386534, guid: a66ac72a193c25f4aa2cea5e0339e639, type: 2}
 --- !u!114 &114654586277362018
@@ -1542,89 +1512,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   column: {fileID: 1035323379897710, guid: 840a12472f9babb4ab826bbdb13150aa, type: 2}
---- !u!114 &114897861857081068
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1423868531045418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5574934d2cb71684f8460763d8d13979, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tempo: 60
-  TotalMeasures: 6
-  BeatsPerMeasure: 4
-  notes:
-  - Measure: 1
-    Beat: 1
-    Note: 60
-    Finger: 1
-  - Measure: 1
-    Beat: 2
-    Note: 62
-    Finger: 2
-  - Measure: 1
-    Beat: 3
-    Note: 64
-    Finger: 3
-  - Measure: 1
-    Beat: 4
-    Note: 65
-    Finger: 4
-  - Measure: 2
-    Beat: 1
-    Note: 67
-    Finger: 5
-  - Measure: 2
-    Beat: 2
-    Note: 65
-    Finger: 4
-  - Measure: 2
-    Beat: 3
-    Note: 64
-    Finger: 3
-  - Measure: 2
-    Beat: 4
-    Note: 62
-    Finger: 2
-  - Measure: 3
-    Beat: 1
-    Note: 60
-    Finger: 1
-  - Measure: 3
-    Beat: 2
-    Note: 64
-    Finger: 3
-  - Measure: 3
-    Beat: 3
-    Note: 67
-    Finger: 5
-  - Measure: 3
-    Beat: 4
-    Note: 64
-    Finger: 3
-  - Measure: 4
-    Beat: 1
-    Note: 60
-    Finger: 1
-  - Measure: 4
-    Beat: 2
-    Note: 67
-    Finger: 5
-  - Measure: 4
-    Beat: 3
-    Note: 65
-    Finger: 4
-  - Measure: 4
-    Beat: 4
-    Note: 62
-    Finger: 2
-  - Measure: 5
-    Beat: 1
-    Note: 60
-    Finger: 1
 --- !u!114 &114949664877556404
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour {
 
-    public GameObject lvl1;
+    public GameObject Lvl1;
+    public GameObject Lvl2;
+
     private GameObject lvl_aux;
 
-    public TextMesh audio_info;
+    public TextMesh Audio_info;
     // Use this for initialization
     void Start () {
         GameObject.FindGameObjectWithTag("PianoDriver").GetComponent<PianoDriver>().pianoEvent.AddListener(PianoActionRecieved);
         if (GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AudioNotes)
         {
-            audio_info.text = "M\nU\nT\nE\n\nN\nO\nT\nE\nS";
+            Audio_info.text = "M\nU\nT\nE\n\nN\nO\nT\nE\nS";
         }
         else
         {
-            audio_info.text = "\nU\nN\nM\nU\nT\nE\n\nN\nO\nT\nE\nS";
+            Audio_info.text = "\nU\nN\nM\nU\nT\nE\n\nN\nO\nT\nE\nS";
         }
     }
 	
@@ -33,7 +35,14 @@ public class MenuManager : MonoBehaviour {
             switch (key)
             {
                 case PianoDriver.KeyNote.DO:
-                    lvl_aux = Instantiate(lvl1);
+                    lvl_aux = Instantiate(Lvl1);
+                    lvl_aux.name = lvl_aux.transform.name.Replace("(Clone)", "");
+                    lvl_aux.transform.position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
+                    lvl_aux.transform.rotation = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().rotation;
+                    GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().NextState();
+                    break;
+                case PianoDriver.KeyNote.RE:
+                    lvl_aux = Instantiate(Lvl2);
                     lvl_aux.name = lvl_aux.transform.name.Replace("(Clone)", "");
                     lvl_aux.transform.position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
                     lvl_aux.transform.rotation = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().rotation;
@@ -43,12 +52,12 @@ public class MenuManager : MonoBehaviour {
                     if (GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AudioNotes)
                     {
                         GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AudioNotes = false;
-                        audio_info.text = "\nU\nN\nM\nU\nT\nE\n\nN\nO\nT\nE\nS";
+                        Audio_info.text = "\nU\nN\nM\nU\nT\nE\n\nN\nO\nT\nE\nS";
                     }
                     else
                     {
                         GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AudioNotes = true;
-                        audio_info.text = "M\nU\nT\nE\n\nN\nO\nT\nE\nS";
+                        Audio_info.text = "M\nU\nT\nE\n\nN\nO\nT\nE\nS";
                     }
                     break;
             }

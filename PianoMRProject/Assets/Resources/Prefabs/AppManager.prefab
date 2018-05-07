@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ca80e1bb51bd04683e629835b4e132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AppState: 5
+  AppState: 3
   InfoText: {fileID: 102606006249873826}
   AudioNotes: 1
   Splashes: {fileID: 1925793310478670, guid: 661eaf544b0aac042909f5ae6d05c5f1, type: 2}
@@ -160,7 +160,8 @@ MonoBehaviour:
   PianoDriver: {fileID: 1436845680900096, guid: 26a7e86e40cb51e4fa0419741289fc14,
     type: 2}
   IpAdrress: 
-  ImagePianoTarget: {fileID: 0}
+  ImagePianoTarget: {fileID: 1956716610277646, guid: 0f671d9e8cd53ee429d86fc545648b74,
+    type: 2}
   VuforiaIntructions: {fileID: 1947443517306428, guid: ba0f5248105de824fa3d3893cd6c0a83,
     type: 2}
   Piano: {fileID: 1769763100875504, guid: d80c39413db8ad942a053d08a776ad04, type: 2}

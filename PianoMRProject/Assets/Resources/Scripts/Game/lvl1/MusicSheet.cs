@@ -7,9 +7,10 @@ using System;
 public class MusicSheet : MonoBehaviour{
 
     [Header("Song Values")]
-    public int Tempo;   //Beats Per Minute
+    public float Tempo;   //Beats Per Minute
     public int TotalMeasures; //Compases totales
     public int BeatsPerMeasure; //Numer of quarters per Measure - Numero de negras por compás
+    public float InitPositionNotes;
     [Header("Notes")]
     public List<NoteMusicSheet> notes;
 
@@ -22,7 +23,7 @@ public class MusicSheet : MonoBehaviour{
 	    void Update () {
 		
 	    }
-    public List<NoteMusicSheet> getNotes(int measure, int beat){
+    public List<NoteMusicSheet> getNotes(int measure, int beat, int partbeat){
 
         List<NoteMusicSheet> aux = new List<NoteMusicSheet>();
 
@@ -32,7 +33,10 @@ public class MusicSheet : MonoBehaviour{
             {
                 if (note.Beat == beat)
                 {
-                    aux.Add(note);
+                    if(note.PartBeat == partbeat)
+                    {
+                        aux.Add(note);
+                    }
                 }
             }
         }

@@ -10,7 +10,7 @@ public class MusicSheetManager : MonoBehaviour
     public GameObject note;
 
     //Song values
-    private int Tempo;   //Beats Per Minute
+    private float Tempo;   //Beats Per Minute
     private int TotalMeasures; //Compases totales
     private int BeatsPerMeasure; //Numer of quarters per Measure - Numero de negras por compás
 
@@ -23,30 +23,33 @@ public class MusicSheetManager : MonoBehaviour
     private float tempoSong;
     private float auxTimer;
     private float speed;
-    public float initPositionNotes;
+    private int partBeat;
+    private float initPositionNotes;
     private Vector3 aux_position;
     [Header("User Feedback")]
     public TextMesh scoreText;
     [Header("Prefab loads when the game ends")]
     public GameObject lvl_ends;
 
-
     private void Awake()
     {
-
-    }
-    // Use this for initialization
-    void Start()
-    {
+        initPositionNotes = musicSheet.InitPositionNotes;
         Tempo = musicSheet.Tempo;
         TotalMeasures = musicSheet.TotalMeasures;
         BeatsPerMeasure = musicSheet.BeatsPerMeasure;
         actualBeat = 1;
         actualMeasure = 1;
-        tempoSong = 60f/Tempo;
+        tempoSong = 60f / Tempo;
         auxTimer = Timer;
         this.speed = -0.0945f * (Tempo / 60f);
         actualScore = 0;
+        partBeat = 1;
+
+    }
+    // Use this for initialization
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
@@ -63,20 +66,29 @@ public class MusicSheetManager : MonoBehaviour
 
     private void UpdateSong()
     {
-        if (Timer >= auxTimer + tempoSong) //New Beat
+        if (Timer >= auxTimer + tempoSong/4) //New PartBeat
         {
             auxTimer = Timer;
-            UpdateBeat();
+            UpdateBeatPart();
         }
     }
     private void UpdateBeat()
     {
-        InvokeNote();
         actualBeat++;
         if (actualBeat > BeatsPerMeasure)
         {
             UpdateMeasure();
             actualBeat = 1;
+        }
+    }
+    private void UpdateBeatPart()
+    {
+        InvokeNote();
+        partBeat++;
+        if(partBeat > 4)
+        {
+            UpdateBeat();
+            partBeat = 1;
         }
     }
     private void UpdateMeasure()
@@ -94,9 +106,10 @@ public class MusicSheetManager : MonoBehaviour
         }
     }
 
+
     private void InvokeNote()
     {
-        List<NoteMusicSheet> notes = musicSheet.getNotes(actualMeasure,actualBeat);
+        List<NoteMusicSheet> notes = musicSheet.getNotes(actualMeasure,actualBeat,partBeat);
         if (notes == null) return;
         foreach (NoteMusicSheet note_musicsheet in notes)
         {
