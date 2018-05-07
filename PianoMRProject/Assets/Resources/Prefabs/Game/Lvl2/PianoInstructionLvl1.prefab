@@ -996,7 +996,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1320569875225578}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -7.9, z: 7.32}
+  m_LocalPosition: {x: 0, y: -17.16, z: 7.32}
   m_LocalScale: {x: 0.16666667, y: 0.16666673, z: 0.16666673}
   m_Children: []
   m_Father: {fileID: 4684464063654006}
@@ -1255,7 +1255,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1371121822788964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -8.1, z: 5.18}
+  m_LocalPosition: {x: 0, y: -16.9, z: 5.18}
   m_LocalScale: {x: 3, y: 0.35, z: 2.5}
   m_Children:
   - {fileID: 4642198481052552}
@@ -4182,7 +4182,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1320569875225578}
-  m_Text: These are the keys we will use in this level
+  m_Text: These are the keys we are using in this level
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
