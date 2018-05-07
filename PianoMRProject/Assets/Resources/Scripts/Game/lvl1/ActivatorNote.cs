@@ -52,19 +52,17 @@ public class ActivatorNote : MonoBehaviour {
     public void Press()
     {
         render.material = activate_material;
-        if (active==true)
+        if (active==true) //If a note has enter into the trigger and the key pressed
         {
             Destroy(note);
-            if (note != null)
-            {
-                GameObject.FindGameObjectWithTag("SheetManager").GetComponent<MusicSheetManager>().IncreaseScore();
-                GameObject.FindGameObjectWithTag(KeyNote.ToString()).GetComponent<PianoKey>().PressHit();
-            }
-            else
-            {
-                GameObject.FindGameObjectWithTag("SheetManager").GetComponent<MusicSheetManager>().DecreaseScore();
-                GameObject.FindGameObjectWithTag(KeyNote.ToString()).GetComponent<PianoKey>().PressMiss();
-            }
+            GameObject.FindGameObjectWithTag("SheetManager").GetComponent<MusicSheetManager>().IncreaseScore();
+            GameObject.FindGameObjectWithTag(KeyNote.ToString()).GetComponent<PianoKey>().PressHit();
+            active = false;
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("SheetManager").GetComponent<MusicSheetManager>().DecreaseScore();
+            GameObject.FindGameObjectWithTag(KeyNote.ToString()).GetComponent<PianoKey>().PressMiss();
         }
     }
 
