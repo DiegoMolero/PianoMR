@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 114000012434513746}
   - component: {fileID: 114000013868099214}
   - component: {fileID: 114708646396671696}
-  - component: {fileID: 114742747811649402}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -501,20 +500,6 @@ MonoBehaviour:
   debugDrawPointingRays: 0
   debugDrawPointingRayColors: []
   uiRaycastCamera: {fileID: 20049547090947856}
---- !u!114 &114742747811649402
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011070707148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a23bf9a6a8497a4490fdbd42c41357e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ControllerPointerStabilizer: {fileID: 114345042324023316}
-  Cursor: {fileID: 0}
-  SearchForCursorIfUnset: 1
 --- !u!114 &114749671304188880
 MonoBehaviour:
   m_ObjectHideFlags: 1

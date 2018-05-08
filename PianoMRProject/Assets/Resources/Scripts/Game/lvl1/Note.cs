@@ -14,7 +14,7 @@ public class Note : MonoBehaviour {
 
     public void Initialize(PianoDriver.KeyNote target, float initPosition, float speed,int finger)
     {
-        this.transform.position += new Vector3(0,initPosition,0);//* this.GetComponent<Transform>().up.normalized;
+        this.transform.position += new Vector3(0,initPosition,0);
         this.transform.position += positionNote(target);
         this.transform.rotation = Quaternion.LookRotation(this.transform.forward.normalized);
         rb.velocity = new Vector3(0, speed, 0);
@@ -54,33 +54,8 @@ public class Note : MonoBehaviour {
 
     private Vector3 positionNote(PianoDriver.KeyNote target)
     {
-        Vector3 target_position= new Vector3(0,0,0);
-        Transform aux = GameObject.FindGameObjectWithTag("Triggers").transform.FindChild(target.ToString());
-        Debug.Log(target.ToString() + " "+aux.position.x);
-        target_position = aux.position.x * this.GetComponent<Transform>().right.normalized;
-        /*
-        switch (target)
-        {
-            case PianoDriver.KeyNote.DO:
-                target_position = -0.0781f * this.GetComponent<Transform>().right.normalized;
-                break;
-            case PianoDriver.KeyNote.RE:
-                target_position = -0.0555f * this.GetComponent<Transform>().right.normalized;
-                break;
-            case PianoDriver.KeyNote.MI:
-                target_position = -0.0329f * this.GetComponent<Transform>().right.normalized;
-                break;
-            case PianoDriver.KeyNote.FA:
-                target_position = -0.0103f * this.GetComponent<Transform>().right.normalized;
-                break;
-            case PianoDriver.KeyNote.SOL:
-                target_position = 0.0123f * this.GetComponent<Transform>().right.normalized;
-                break;
-            case PianoDriver.KeyNote.LA:
-                target_position = 0.0225f * this.GetComponent<Transform>().right.normalized;
-                break;
-        }
-*/
+        Transform aux = GameObject.FindGameObjectWithTag("Triggers").transform.Find(target.ToString());
+        Vector3 target_position = aux.localPosition.x * this.GetComponent<Transform>().right.normalized;
         return target_position;
     }
 }

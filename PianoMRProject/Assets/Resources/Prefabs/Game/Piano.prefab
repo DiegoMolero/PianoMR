@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 4447687808397864}
   - component: {fileID: 33165598339434516}
   - component: {fileID: 23224873948713598}
-  - component: {fileID: 114735033514259310}
+  - component: {fileID: 114021190677616480}
   m_Layer: 0
   m_Name: Piano
   m_TagString: Piano
@@ -2101,6 +2101,30 @@ MonoBehaviour:
   Hit_material: {fileID: 2100000, guid: 140837ce105bb794ab26ff8942bb0cba, type: 2}
   Miss_material: {fileID: 2100000, guid: 856979581145c0f40a94c014deac03dd, type: 2}
   Press_material: {fileID: 2100000, guid: 16911f6f6dc12ed4d8133367711d81e5, type: 2}
+--- !u!114 &114021190677616480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1769763100875504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88581dff3d0b87f4d96b52b6aadbf54d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _DO: {fileID: 1875795969811168}
+  _DO_A: {fileID: 1775397102361260}
+  _RE: {fileID: 1640579519926044}
+  _RE_A: {fileID: 1223651155830724}
+  _MI: {fileID: 1784795745972300}
+  _FA: {fileID: 1767134264222562}
+  _FA_A: {fileID: 1465364987775444}
+  _SOL: {fileID: 1439617519958218}
+  _SOL_A: {fileID: 1042385119327824}
+  _LA: {fileID: 1450481955174300}
+  _LA_A: {fileID: 1023829737678710}
+  _SI: {fileID: 1764586755075118}
+  _DO2: {fileID: 1839469652827588}
 --- !u!114 &114038117328670116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2293,27 +2317,3 @@ MonoBehaviour:
   Hit_material: {fileID: 2100000, guid: 140837ce105bb794ab26ff8942bb0cba, type: 2}
   Miss_material: {fileID: 2100000, guid: 856979581145c0f40a94c014deac03dd, type: 2}
   Press_material: {fileID: 2100000, guid: 16911f6f6dc12ed4d8133367711d81e5, type: 2}
---- !u!114 &114735033514259310
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1769763100875504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88581dff3d0b87f4d96b52b6aadbf54d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _DO: {fileID: 1875795969811168}
-  _DO_A: {fileID: 1775397102361260}
-  _RE: {fileID: 1640579519926044}
-  _RE_A: {fileID: 1223651155830724}
-  _MI: {fileID: 1784795745972300}
-  _FA: {fileID: 1767134264222562}
-  _FA_A: {fileID: 1465364987775444}
-  _SOL: {fileID: 1439617519958218}
-  _SOL_A: {fileID: 1042385119327824}
-  _LA: {fileID: 1450481955174300}
-  _LA_A: {fileID: 1023829737678710}
-  _SI: {fileID: 1764586755075118}
-  _DO2: {fileID: 1839469652827588}
