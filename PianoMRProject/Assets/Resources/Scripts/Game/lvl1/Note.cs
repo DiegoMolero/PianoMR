@@ -55,6 +55,10 @@ public class Note : MonoBehaviour {
     private Vector3 positionNote(PianoDriver.KeyNote target)
     {
         Vector3 target_position= new Vector3(0,0,0);
+        Transform aux = GameObject.FindGameObjectWithTag("Triggers").transform.FindChild(target.ToString());
+        Debug.Log(target.ToString() + " "+aux.position.x);
+        target_position = aux.position.x * this.GetComponent<Transform>().right.normalized;
+        /*
         switch (target)
         {
             case PianoDriver.KeyNote.DO:
@@ -76,6 +80,7 @@ public class Note : MonoBehaviour {
                 target_position = 0.0225f * this.GetComponent<Transform>().right.normalized;
                 break;
         }
+*/
         return target_position;
     }
 }

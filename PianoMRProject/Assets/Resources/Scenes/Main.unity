@@ -306,7 +306,7 @@ Prefab:
     - target: {fileID: 114194278075887296, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
         type: 2}
       propertyPath: AppState
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9adf6485e2c1ee04ea6c6a85a9192005, type: 2}

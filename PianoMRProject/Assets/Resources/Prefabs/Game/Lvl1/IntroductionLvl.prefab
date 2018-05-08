@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 1520413161334610, guid: dcb0363b6678e4f41a78f12a9f52cfd4, type: 2}
-  InstructionFingers: {fileID: 1069207395180012, guid: 1b704cce536e30a45bb83711a8f9886a,
+  InstructionFingers: {fileID: 1253483404871964, guid: e66ff305c4e32eb48bcf041c10d8cde4,
     type: 2}
   InstructionKeys: {fileID: 1685266680520184, guid: 02f5a89fa4cbf34428d3e4a66732bfe6,
     type: 2}

@@ -22,10 +22,17 @@ public class ActivatorNote : MonoBehaviour {
     // Use this for initialization
     void Start () {
         render.material = inactivate_material;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        GameObject.FindGameObjectWithTag("PianoDriver").GetComponent<PianoDriver>().pianoEvent.AddListener(PianoActionRecieved);
+    }
+
+    public void PianoActionRecieved(PianoDriver.KeyNote key, bool action)
+    {
+        if (key == KeyNote) ActionRecieved(action);
+
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 

@@ -19,11 +19,16 @@ TagManager:
   - LA
   - SI
   - DO2
-  - DO#
-  - RE#
-  - FA#
+  - DO_A
+  - RE_A
+  - FA_A
+  - SOL_A
+  - LA_A
   - SOL#
+  - RE#
+  - DO#
   - LA#
+  - FA#
   layers:
   - Default
   - TransparentFX

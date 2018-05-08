@@ -138,9 +138,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 1952422425543806, guid: d0b576cf8fc55394697a232c1fb182c5, type: 2}
-  InstructionFingers: {fileID: 1325381265511984, guid: bccc62f3e2bb769449a99e8a45071d55,
+  InstructionFingers: {fileID: 1002443197571112, guid: cc1f79ab87014ce4c888f28219fc824e,
     type: 2}
-  InstructionKeys: {fileID: 1854619086442384, guid: 57746851371258c49bb8d85c690f8beb,
+  InstructionKeys: {fileID: 1859836783869008, guid: 85d6e08474c6be04a9d0becb7b4763e6,
     type: 2}
   Timer: 15
   txt: {fileID: 102516069295612156}
