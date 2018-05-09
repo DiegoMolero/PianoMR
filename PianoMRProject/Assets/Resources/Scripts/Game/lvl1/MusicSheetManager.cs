@@ -33,6 +33,12 @@ public class MusicSheetManager : MonoBehaviour
 
     private void Awake()
     {
+
+
+    }
+    // Use this for initialization
+    void Start()
+    {
         initPositionNotes = musicSheet.InitPositionNotes;
         Tempo = musicSheet.Tempo;
         TotalMeasures = musicSheet.TotalMeasures;
@@ -44,12 +50,6 @@ public class MusicSheetManager : MonoBehaviour
         this.speed = -0.0945f * (Tempo / 60f);
         actualScore = 0;
         partBeat = 1;
-
-    }
-    // Use this for initialization
-    void Start()
-    {
-
     }
 
     // Update is called once per frame

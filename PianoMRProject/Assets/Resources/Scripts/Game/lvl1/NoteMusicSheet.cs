@@ -11,4 +11,12 @@ public class NoteMusicSheet {
     public PianoDriver.KeyNote Note;
     public int Finger;
 
+    public NoteMusicSheet(int measure, int beat, int partBeat, PianoDriver.KeyNote note, int finger)
+    {
+        Measure = measure;
+        Beat = beat;
+        PartBeat = partBeat;
+        Note = note;
+        Finger = finger;
+    }
 }

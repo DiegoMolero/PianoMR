@@ -6,6 +6,7 @@ public class MenuManager : MonoBehaviour {
 
     public GameObject Lvl1;
     public GameObject Lvl2;
+    public GameObject LvlImport;
 
     private GameObject lvl_aux;
 
@@ -43,6 +44,13 @@ public class MenuManager : MonoBehaviour {
                     break;
                 case PianoDriver.KeyNote.RE:
                     lvl_aux = Instantiate(Lvl2);
+                    lvl_aux.name = lvl_aux.transform.name.Replace("(Clone)", "");
+                    lvl_aux.transform.position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
+                    lvl_aux.transform.rotation = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().rotation;
+                    GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().NextState();
+                    break;
+                case PianoDriver.KeyNote.MI:
+                    lvl_aux = Instantiate(LvlImport);
                     lvl_aux.name = lvl_aux.transform.name.Replace("(Clone)", "");
                     lvl_aux.transform.position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
                     lvl_aux.transform.rotation = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().rotation;
