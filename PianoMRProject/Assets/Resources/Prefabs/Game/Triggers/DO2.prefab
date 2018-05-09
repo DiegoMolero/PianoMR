@@ -109,8 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KeyNote: 72
-  inactivate_material: {fileID: 2100000, guid: 6c72e9a56efb6ae449d4a0e9796dbe4d, type: 2}
-  activate_material: {fileID: 2100000, guid: e31da0279f576ab44bba2f311c9d5c7a, type: 2}
+  inactivate_material: {fileID: 2100000, guid: 25bde664750285244a5a123a31c0a41b, type: 2}
+  activate_material: {fileID: 2100000, guid: c91f64c8c39ab374c9f84fe8630868ac, type: 2}
 --- !u!135 &135846222015531874
 SphereCollider:
   m_ObjectHideFlags: 1

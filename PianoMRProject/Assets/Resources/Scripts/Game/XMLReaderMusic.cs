@@ -36,7 +36,7 @@ public class XMLReaderMusic : MonoBehaviour {
         musicSheet.InitPositionNotes = 0.445f;
         musicSheet.notes = Notes;
         musicSheet.Tempo = Tempo;
-        musicSheet.TotalMeasures = TotalMeasures;
+        musicSheet.TotalMeasures = TotalMeasures+2;
         GameObject.FindGameObjectWithTag("SheetManager").GetComponent<MusicSheetManager>().musicSheet = musicSheet;
     }
     // Use this for initialization
