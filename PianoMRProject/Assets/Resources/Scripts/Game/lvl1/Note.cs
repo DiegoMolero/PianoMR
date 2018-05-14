@@ -6,7 +6,6 @@ public class Note : MonoBehaviour {
     private Rigidbody rb;
 
     public PianoDriver.KeyNote Target;
-    public float Timer = 0.0f;
     private bool initialized = false;
     public TextMesh infoFinguer1;
     public TextMesh infoFinguer2;
@@ -40,15 +39,12 @@ public class Note : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(initialized){
-            Timer += Time.deltaTime;
-        }
+
       
     }
 
     private void OnDestroy()
     {
-        //Debug.Log(Timer.ToString());
     }
 
 

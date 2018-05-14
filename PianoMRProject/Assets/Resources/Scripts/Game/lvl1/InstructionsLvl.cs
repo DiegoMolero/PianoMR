@@ -33,9 +33,11 @@ public class InstructionsLvl : MonoBehaviour {
                 if( InstructionState == 0)
                 {
                     InstructionState++;
-                    aux = Instantiate(InstructionKeys, this.transform);
-                    aux.name = aux.transform.name.Replace("(Clone)", "");
-
+                    if(InstructionKeys != null)
+                    {
+                        aux = Instantiate(InstructionKeys, this.transform);
+                        aux.name = aux.transform.name.Replace("(Clone)", "");
+                    }
                 }
 
             }
@@ -44,9 +46,12 @@ public class InstructionsLvl : MonoBehaviour {
                 if (InstructionState == 1)
                 {
                     InstructionState++;
-                    Destroy(aux);
-                    aux = Instantiate(InstructionFingers, this.transform);
-                    aux.name = aux.transform.name.Replace("(Clone)", "");
+                    if (InstructionFingers != null)
+                    {
+                        Destroy(aux);
+                        aux = Instantiate(InstructionFingers, this.transform);
+                        aux.name = aux.transform.name.Replace("(Clone)", "");
+                    }
                 }
 
             }

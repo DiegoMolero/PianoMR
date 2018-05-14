@@ -284,7 +284,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: 0
-  Timer: 0
   infoFinguer1: {fileID: 102685715190238054}
   infoFinguer2: {fileID: 102807174531624452}
   speed: 0
@@ -298,6 +297,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.45
-  m_Height: 1.6
+  m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.16, z: 0}

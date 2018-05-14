@@ -1,12 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class MusicSheetManager : MonoBehaviour
 {
     private Vector3 position;
-    public float Timer = 0.0f;
-
+    public float TimerSeconds = 0.0f;
+    public Stopwatch sw;
     public GameObject note;
 
     //Song values
@@ -21,7 +23,6 @@ public class MusicSheetManager : MonoBehaviour
     [Header("Song that will be played")]
     public MusicSheet musicSheet;
     private float tempoSong;
-    private float auxTimer;
     private float speed;
     private int partBeat;
     private float initPositionNotes;
@@ -30,6 +31,7 @@ public class MusicSheetManager : MonoBehaviour
     public TextMesh scoreText;
     [Header("Prefab loads when the game ends")]
     public GameObject lvl_ends;
+    private float auxTimer=0;
 
     private void Awake()
     {
@@ -46,30 +48,38 @@ public class MusicSheetManager : MonoBehaviour
         actualBeat = 1;
         actualMeasure = 1;
         tempoSong = 60f / Tempo;
-        auxTimer = Timer;
+        sw = new Stopwatch();
         this.speed = -0.0945f * (Tempo / 60f);
         actualScore = 0;
         partBeat = 1;
+        sw.Start();
+        UpdateTimmer();
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateTimmer();
         UpdateSong();
     }
 
     private void UpdateTimmer()
     {
-        Timer += Time.deltaTime;
+        // Timer += (Time.fixedDeltaTime-Time.deltaTime);
+        {
+            auxTimer = sw.ElapsedMilliseconds / 1000f;
+            //UnityEngine.Debug.Log("SUMA: " + sw.Elapsed.Seconds + "  " + sw.ElapsedMilliseconds / 1000f+"  = "+auxTimer);
+        }
     }
 
     private void UpdateSong()
     {
-        if (Timer >= auxTimer + tempoSong/4) //New PartBeat
+        float real_auxTimer = sw.ElapsedMilliseconds / 1000f;
+        if (real_auxTimer >= (auxTimer + (float)tempoSong/4)) //New PartBeat
         {
-            auxTimer = Timer;
             UpdateBeatPart();
+            auxTimer = real_auxTimer;
+
+
         }
     }
     private void UpdateBeat()
@@ -96,7 +106,6 @@ public class MusicSheetManager : MonoBehaviour
         actualMeasure++;
         if(actualMeasure > TotalMeasures)
         {
-            Debug.Log("FIN");
             GameObject lvl_aux = Instantiate(lvl_ends);
             lvl_aux.GetComponent<FinalResult>().scoreObtained = (int)((float)actualScore / (float)musicSheet.notes.Capacity * 100);
             lvl_aux.name = lvl_aux.transform.name.Replace("(Clone)", "");

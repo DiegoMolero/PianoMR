@@ -7,6 +7,7 @@ public class FinalResult : MonoBehaviour {
     public int scoreObtained;
     public int scoreNeeded;
     public int timeShowResult;
+    public bool import;
 	// Use this for initialization
 	void Start () {
         Destroy(this.gameObject, timeShowResult);
@@ -23,7 +24,15 @@ public class FinalResult : MonoBehaviour {
 
     private void OnDestroy()
     {
-        GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().ChangeState(StageManager.State.MenuGame);
+        if (import ==false)
+        {
+            GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().ChangeState(StageManager.State.MenuGame);
+        }
+        else
+        {
+            GameObject.Find("LvlImport").GetComponent<StateImportManager>().NextState();
+        }
+
     }
 
     // Update is called once per frame

@@ -1,16 +1,18 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 using UnityEngine;
+#if !UNITY_EDITOR
+using System.Net.Http;
+#endif
 
 public class XMLReaderMusic : MonoBehaviour {
     private List<string> data;
-    public string file;
 
     public List<NoteMusicSheet> Notes;
+    public MusicSheet musicSheet;
     public float Tempo;
     public int TotalMeasures;
     public int BeatsPerMeasure;
@@ -30,14 +32,8 @@ public class XMLReaderMusic : MonoBehaviour {
         actual_measure = 1;
         actual_beat = 1;
         actual_partbeat = 1;
-        this.Notes = Read(file);
-        MusicSheet musicSheet = new MusicSheet();
-        musicSheet.BeatsPerMeasure = BeatsPerMeasure;
-        musicSheet.InitPositionNotes = 0.445f;
-        musicSheet.notes = Notes;
-        musicSheet.Tempo = Tempo;
-        musicSheet.TotalMeasures = TotalMeasures+2;
-        GameObject.FindGameObjectWithTag("SheetManager").GetComponent<MusicSheetManager>().musicSheet = musicSheet;
+        this.Notes = new List<NoteMusicSheet>();
+        this.musicSheet = new MusicSheet();
     }
     // Use this for initialization
     void Start () {
@@ -50,23 +46,61 @@ public class XMLReaderMusic : MonoBehaviour {
 		
 	}
 
-    public List<NoteMusicSheet> Read(string file)
+    public MusicSheet ReadLocalFile(string file)
     {
-        List<NoteMusicSheet> MusicSheetNotes = new List<NoteMusicSheet>();
         string path = "Stages/" + file;
         TextAsset e = Resources.Load<TextAsset>(path);
-
+        XDocument _xml = null;
         XmlReaderSettings settings = new XmlReaderSettings();
-        settings.ProhibitDtd = false;
-
+        settings.DtdProcessing = DtdProcessing.Ignore;
         XmlReader reader = XmlReader.Create(new StringReader(e.text), settings);
+        try
+        {
+            _xml = XDocument.Load(reader);
+        }
+        catch
+        {
+            exitReader();
+        }
+        parseXML(_xml);
+        buildMusicSheet();
+        return musicSheet;
+    }
+#if !UNITY_EDITOR
+    public async void ReadURL(string url)
+    {
+        XDocument _xml = null;
+        using (var httpclient = new HttpClient())
+        {
+            try
+            {
+                HttpResponseMessage response = await httpclient.GetAsync(url);
+                _xml = XDocument.Load(await response.Content.ReadAsStreamAsync());
+            }
+            catch (Exception exc)
+            {
+                Debug.Log("Bad URL");
+                exitReader();
+            }
+        }
+    parseXML(_xml);
+    this.GetComponent<StateImportManager>().NextState();
+    }
+#endif
+    private void exitReader()
+    {
+        GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().ChangeState(StageManager.State.MenuGame);
+        Destroy(this.transform.parent.gameObject);
+    }
+#region XML PARSING
+    private void parseXML(XDocument _xml)
+    {
+        List<NoteMusicSheet> MusicSheetNotes = new List<NoteMusicSheet>();
 
-        XDocument _xml = XDocument.Load(reader);
         IEnumerable<XElement> _dict = _xml.Element("score-partwise").Element("part").Elements("measure");
         //SetUp MusicSheet
         BeatsPerMeasure = Int32.Parse(_xml.Element("score-partwise").Element("part").Element("measure").Element("attributes").Element("time").Element("beats").Value);
         Tempo = float.Parse(_xml.Element("score-partwise").Element("part").Element("measure").Element("direction").Element("direction-type").Element("metronome").Element("per-minute").Value);
-        Debug.Log(Tempo);
 
         //Read Notes
         foreach (XElement measure in _dict)
@@ -91,11 +125,11 @@ public class XMLReaderMusic : MonoBehaviour {
                             XElement pitch = note.Element("pitch");
                             string aux_note = pitch.Element("step").Value;
                             int aux_octave = Int32.Parse(pitch.Element("octave").Value);
-                            Debug.Log("LEYENDO: " + aux_note + " " + aux_octave + " measuere: " + actual_measure+ " type "+ aux_type);
-                           
+                            Debug.Log("LEYENDO: " + aux_note + " " + aux_octave + " measuere: " + actual_measure + " type " + aux_type);
+
                             if (note.Element("chord") == null) //IF IS NOT A CHORD
                             {
-                                noteMusicSheet = new NoteMusicSheet(actual_measure,actual_beat,actual_partbeat,ParsePitch(aux_note,aux_octave),1);
+                                noteMusicSheet = new NoteMusicSheet(actual_measure, actual_beat, actual_partbeat, ParsePitch(aux_note, aux_octave), 1);
                                 updatePositionNote(aux_type);
                             }
                             else
@@ -111,14 +145,15 @@ public class XMLReaderMusic : MonoBehaviour {
                 }
                 catch (Exception exc)
                 {
-                    Debug.Log(exc.ToString());
+
                 }
 
             }
         }
-        return MusicSheetNotes;
-    }
 
+        this.Notes = MusicSheetNotes;
+
+    }
     private PianoDriver.KeyNote ParsePitch(string note, int octave)
     {
         if (octave != 4 && octave != 5) {
@@ -148,7 +183,17 @@ public class XMLReaderMusic : MonoBehaviour {
         }
         throw new System.ArgumentException("Note not found");
     }
-
+    private void buildMusicSheet()
+    {
+       
+        musicSheet.BeatsPerMeasure = BeatsPerMeasure;
+        musicSheet.InitPositionNotes = 0.445f;
+        musicSheet.notes = Notes;
+        musicSheet.Tempo = Tempo;
+        musicSheet.TotalMeasures = TotalMeasures + 2;
+    }
+#endregion
+#region CALCULATE TEMPO
     private void updatePositionNote(string type)
     {
         previous_measure = actual_measure;
@@ -187,7 +232,6 @@ public class XMLReaderMusic : MonoBehaviour {
         }
 
     }
-
     private void updateBeat()
     {
         actual_beat++;
@@ -203,6 +247,7 @@ public class XMLReaderMusic : MonoBehaviour {
         actual_partbeat = 1;
         actual_beat = 1;
     }
+#endregion
 
 
 }

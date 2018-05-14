@@ -7,7 +7,6 @@ public class MenuManager : MonoBehaviour {
     public GameObject Lvl1;
     public GameObject Lvl2;
     public GameObject LvlImport;
-
     private GameObject lvl_aux;
 
     public TextMesh Audio_info;
