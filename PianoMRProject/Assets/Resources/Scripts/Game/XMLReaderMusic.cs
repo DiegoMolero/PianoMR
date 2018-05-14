@@ -84,6 +84,7 @@ public class XMLReaderMusic : MonoBehaviour {
             }
         }
     parseXML(_xml);
+    buildMusicSheet();
     this.GetComponent<StateImportManager>().NextState();
     }
 #endif

@@ -63,15 +63,20 @@ public class StateImportManager : MonoBehaviour {
                 #endregion
                 #region PLAYING STATE
                 case State.Playing:
-#if UNITY_EDITOR
-                    Instantiate(LvlImported,this.transform);
+                    Debug.Log("Playing Impored LVL");
+                    aux = Instantiate(LvlImported,this.transform);
+                    aux.name = aux.transform.name.Replace("(Clone)", "");
+                    aux.transform.position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
+                    aux.transform.rotation = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().rotation;
                     GameObject.FindGameObjectWithTag("SheetManager").GetComponent<MusicSheetManager>().musicSheet = xmlReader.musicSheet;
-#endif
                     break;
                 #endregion
                 #region MENU STATE
                 case State.Menu:
-                    Instantiate(MenuImportLvl, this.transform);
+                    aux = Instantiate(MenuImportLvl, this.transform);
+                    aux.name = aux.transform.name.Replace("(Clone)", "");
+                    aux.transform.position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
+                    aux.transform.rotation = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().rotation;
                     break;
                 #endregion
                 #region EXIT
