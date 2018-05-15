@@ -124,19 +124,23 @@ public class XMLReaderMusic : MonoBehaviour {
                         {
                             NoteMusicSheet noteMusicSheet = null;
                             XElement pitch = note.Element("pitch");
-                            string aux_note = pitch.Element("step").Value;
                             int aux_octave = Int32.Parse(pitch.Element("octave").Value);
-                            Debug.Log("LEYENDO: " + aux_note + " " + aux_octave + " measuere: " + actual_measure + " type " + aux_type);
-
-                            if (note.Element("chord") == null) //IF IS NOT A CHORD
+                            PianoDriver.KeyNote aux_note = ParsePitch(pitch.Element("step").Value, aux_octave);
+                            if (pitch.Element("alter") != null) //IF IT IS ALTERED
                             {
-                                noteMusicSheet = new NoteMusicSheet(actual_measure, actual_beat, actual_partbeat, ParsePitch(aux_note, aux_octave), 1);
+                                Debug.Log(Int32.Parse(pitch.Element("alter").Value));
+                                aux_note += Int32.Parse(pitch.Element("alter").Value);
+                            }
+                                if (note.Element("chord") == null) //IF IS NOT A CHORD
+                            {
+                                noteMusicSheet = new NoteMusicSheet(actual_measure, actual_beat, actual_partbeat,aux_note , 1);
                                 updatePositionNote(aux_type);
                             }
                             else
                             {
-                                noteMusicSheet = new NoteMusicSheet(previous_measure, previous_beat, previous_partbeat, ParsePitch(aux_note, aux_octave), 1);
+                                noteMusicSheet = new NoteMusicSheet(previous_measure, previous_beat, previous_partbeat, aux_note, 1);
                             }
+                            Debug.Log("NEW NOTE "+aux_note+" IN MEASURE "+ actual_measure+" BEAT "+actual_beat);
                             MusicSheetNotes.Add(noteMusicSheet);
                         }
 

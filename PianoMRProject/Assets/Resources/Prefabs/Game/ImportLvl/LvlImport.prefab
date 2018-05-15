@@ -102,7 +102,7 @@ MonoBehaviour:
     type: 2}
   MenuImportLvl: {fileID: 1074755120902932, guid: bf05a0c72488d0d4cbab154f7fda3a99,
     type: 2}
-  FileName: posi
+  FileName: alteraciones
   xmlReader: {fileID: 0}
   LvlState: 0
 --- !u!114 &114398359934969766
