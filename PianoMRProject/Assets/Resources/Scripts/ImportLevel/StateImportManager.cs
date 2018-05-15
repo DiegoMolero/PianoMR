@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class StateImportManager : MonoBehaviour {
     public GameObject ScanQRLvl;
+    public GameObject MenuReadyImported;
     public GameObject LvlImported;
     public GameObject MenuImportLvl;
+
     public string FileName;
 
 
@@ -20,9 +22,10 @@ public class StateImportManager : MonoBehaviour {
         None = 0, //None
         ScanQR = 1,//Scan QR
         LoadXML = 2,//Load XML file
-        Playing = 3, //Playing the lvl
-        Menu = 4, //Choose option
-        Exit = 5  //Exit to the main menu
+        ReadyPlay = 3, //The level was loaded fine and is ready to be played
+        Playing = 4, //Playing the lvl
+        Menu = 5, //Choose option
+        Exit = 6  //Exit to the main menu
     }
     // Use this for initialization
     void Start()
@@ -59,6 +62,15 @@ public class StateImportManager : MonoBehaviour {
                     xmlReader.ReadLocalFile(FileName);
                     NextState();
 #endif
+                    break;
+                #endregion
+                #region READYPLAY STATE
+                case State.ReadyPlay:
+                    Debug.Log("Playing Impored LVL");
+                    aux = Instantiate(MenuReadyImported, this.transform);
+                    aux.name = aux.transform.name.Replace("(Clone)", "");
+                    aux.transform.position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
+                    aux.transform.rotation = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().rotation;
                     break;
                 #endregion
                 #region PLAYING STATE

@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScanQRLvl: {fileID: 1109367595335762, guid: 84689d7abcb7d6345b626297502763b4, type: 2}
+  MenuReadyImported: {fileID: 1056139846999158, guid: 6d2ffe0955ecc164a8ac9d7271ea43bb,
+    type: 2}
   LvlImported: {fileID: 1337756438139626, guid: ab2ab802d52159f41af718393a3cbd3c,
     type: 2}
   MenuImportLvl: {fileID: 1074755120902932, guid: bf05a0c72488d0d4cbab154f7fda3a99,
