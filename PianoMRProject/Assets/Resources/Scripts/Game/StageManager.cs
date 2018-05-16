@@ -21,7 +21,6 @@ public class StageManager : Singleton<StageManager>
     [Header("App Info")]
     public State AppState;
     private State PreviousState;
-    public TextMesh InfoText = null;
     public bool AudioNotes = true;
 
     [Header("Splashes State")]
@@ -163,7 +162,6 @@ public class StageManager : Singleton<StageManager>
     private void printMsg(string msg)
     {
         Debug.Log(msg);
-        this.InfoText.text = msg;
     }
     public void SetPiano(GameObject piano)
     {

@@ -11,15 +11,7 @@ public class FinalResult : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Destroy(this.gameObject, timeShowResult);
-        if (scoreObtained >= scoreNeeded)
-        {
-            text.text = "Congrats! :D\nPass to the next level";
-        }
-        else
-        {
-            text.text = "Try again!\n You need " + scoreNeeded + " for complete the level";
-
-        }
+        text.text = "Congrats! \nYour score is\n"+scoreObtained;
     }
 
     private void OnDestroy()
