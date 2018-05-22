@@ -1446,6 +1446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerSeconds: 0
   note: {fileID: 1926238949709468, guid: 61208a94169c10d4d834dfcba02f489f, type: 2}
+  Level: 2
   actualMeasure: 0
   actualBeat: 0
   actualScore: 0

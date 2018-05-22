@@ -258,7 +258,7 @@ MonoBehaviour:
   Axis0Destination: 2
   Axis1Destination: 1
   Axis2Destination: 6
---- !u!1001 &660844726
+--- !u!1001 &652916807
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -299,8 +299,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114194278075887296, guid: 9adf6485e2c1ee04ea6c6a85a9192005,
         type: 2}
-      propertyPath: AppState
-      value: 3
+      propertyPath: InfoText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666420562101152, guid: 9adf6485e2c1ee04ea6c6a85a9192005, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9adf6485e2c1ee04ea6c6a85a9192005, type: 2}

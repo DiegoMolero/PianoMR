@@ -15,7 +15,8 @@ public class MusicSheetManager : MonoBehaviour
     private float Tempo;   //Beats Per Minute
     private int TotalMeasures; //Compases totales
     private int BeatsPerMeasure; //Numer of quarters per Measure - Numero de negras por compás
-
+    [Header("Info Level")]
+    public int Level = 0;
     [Header("Info Values")]
     public int actualMeasure;
     public int actualBeat;
@@ -107,6 +108,7 @@ public class MusicSheetManager : MonoBehaviour
         if(actualMeasure > TotalMeasures)
         {
             GameObject lvl_aux = Instantiate(lvl_ends);
+            if (Level != 0) JsonManagerScore.StoreLvlJSON(new LvlJson(Level, actualScore));
             lvl_aux.GetComponent<FinalResult>().scoreObtained = actualScore;
             lvl_aux.name = lvl_aux.transform.name.Replace("(Clone)", "");
             lvl_aux.transform.position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
