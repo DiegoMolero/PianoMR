@@ -5,17 +5,23 @@ using UnityEngine;
 
 public class LevelsMenu : MonoBehaviour {
 
+    public Transform Arrows;
     public List<GameObject> LevelsSphere;
+
     private GameObject lvlChosen;
+    private int index;
 	// Use this for initialization
 	void Start () {
         GameObject.FindGameObjectWithTag("PianoDriver").GetComponent<PianoDriver>().pianoEvent.AddListener(PianoActionRecieved);
+        index = 0;
+        lvlChosen = null;
+        invokeSphereLevel();
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+    }
 
     public void PianoActionRecieved(PianoDriver.KeyNote key, bool action)
     {
@@ -26,12 +32,10 @@ public class LevelsMenu : MonoBehaviour {
                 //LEFT
                 case PianoDriver.KeyNote.DO:
                     this.left();
-                    Destroy(this.gameObject);
                     break;
                 //PLAY
                 case PianoDriver.KeyNote.MI:
                     this.playLevel();
-                    GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().ChangeState(StageManager.State.MenuGame);
                     Destroy(this.gameObject);
                     break;
                 //RIGHT
@@ -49,16 +53,43 @@ public class LevelsMenu : MonoBehaviour {
 
     private void playLevel()
     {
-        throw new NotImplementedException();
+        lvlChosen.GetComponent<LevelSelector>().LoadLvl();
+        Destroy(this.gameObject);
     }
 
     private void right()
     {
-        throw new NotImplementedException();
+        int limit = LevelsSphere.Capacity - 1;
+        index++;
+        if (index > limit)
+        {
+            index = 0;
+        }
+        Debug.Log(index + "  " + limit);
+        invokeSphereLevel();
     }
 
     private void left()
     {
-        throw new NotImplementedException();
+        int limit = LevelsSphere.Capacity - 1;
+        index--;
+        if (index < 0)
+        {
+            index = limit;
+        }
+        Debug.Log(index + "  " + limit);
+        invokeSphereLevel();
+    }
+
+    private void invokeSphereLevel()
+    {
+        if(lvlChosen != null)
+        {
+            Destroy(lvlChosen);
+        }
+        lvlChosen = Instantiate(LevelsSphere[index], this.transform);
+        lvlChosen.name = lvlChosen.transform.name.Replace("(Clone)", "");
+        lvlChosen.transform.position = Arrows.position;
+        //lvlChosen.transform.rotation = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().rotation;
     }
 }

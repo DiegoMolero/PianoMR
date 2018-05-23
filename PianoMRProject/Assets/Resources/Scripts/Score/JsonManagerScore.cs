@@ -30,6 +30,20 @@ public class JsonManagerScore
         return lvlList;
     }
 
+    public static LvlJson ReadLvlJSON(int level)
+    {
+        List<LvlJson> lvlList = ReadLvlJSON();
+        if (lvlList == null) return null;
+        foreach (LvlJson aux in lvlList)
+        {
+            if (aux.Lvl == level)
+            {
+                return aux;
+            }
+        }
+        return null;
+    }
+
     public static void StoreLvlJSON(LvlJson aux)
     {
         //READ JSON
