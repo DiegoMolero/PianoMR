@@ -17,7 +17,7 @@ public class JsonManagerScore
         {
             jsonFile = reader.ReadToEnd();
         }
-        Debug.Log(jsonFile);
+        //Debug.Log(jsonFile); SEE CONTENT OF JSON FILE
 
         //PARSE JSON FILE
         var objects = JArray.Parse(jsonFile); // parse as array  

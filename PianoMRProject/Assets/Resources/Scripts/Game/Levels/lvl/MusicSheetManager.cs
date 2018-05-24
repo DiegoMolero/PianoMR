@@ -115,13 +115,13 @@ public class MusicSheetManager : MonoBehaviour
             {
                 int stars = calculateStars();
                 record = JsonManagerScore.StoreLvlJSON(new LvlJson(Level, actualScore,stars));
-                lvl_aux.GetComponent<StarDisplay>().DisplayStars(JsonManagerScore.ReadLvlJSON(Level).Stars);
+                lvl_aux.GetComponent<StarDisplay>().DisplayStars(stars);
             }
             //STORE RESULT
             lvl_aux.GetComponent<FinalResult>().scoreObtained = actualScore;
             lvl_aux.GetComponent<FinalResult>().New_record = record;
             lvl_aux.name = lvl_aux.transform.name.Replace("(Clone)", "");
-            lvl_aux.transform.position += GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
+            lvl_aux.transform.position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
             lvl_aux.transform.rotation = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().rotation;
 
             Destroy(this.transform.parent.gameObject);
