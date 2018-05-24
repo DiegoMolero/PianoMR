@@ -1,6 +1,7 @@
 ﻿using HoloToolkit.Unity;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using Vuforia;
 
@@ -56,6 +57,8 @@ public class StageManager : Singleton<StageManager>
 
     // Use this for initialization
     void Start () {
+        string path = Path.Combine(Application.persistentDataPath, "score.json");
+        if(!File.Exists(path)) JsonManagerScore.InitLvlJSON();
     }
 	
 	// Update is called once per frame
