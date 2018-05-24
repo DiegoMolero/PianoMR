@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
 public class LvlJson {
     public int Lvl;
     public int Score;
+    public int Stars;
 
-    public LvlJson(int lvl, int score)
+    public LvlJson(int lvl, int score,int stars)
     {
         Lvl = lvl;
         Score = score;
+        Stars = stars;
     }
 
     public string toJSON()

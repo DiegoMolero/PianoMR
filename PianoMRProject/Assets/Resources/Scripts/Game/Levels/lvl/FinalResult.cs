@@ -5,22 +5,26 @@ using UnityEngine;
 public class FinalResult : MonoBehaviour {
     public TextMesh text;
     public int scoreObtained;
-    public int scoreNeeded;
     public int timeShowResult;
     public bool import;
+    public bool New_record;
 	// Use this for initialization
 	void Start () {
         Destroy(this.gameObject, timeShowResult);
-        text.text = "Congrats! \nYour score is\n"+scoreObtained;
+        if (New_record == true) //IF IS A NEW RECORD
+        {
+            text.text = "NEW RECORD!\n";
+        }
+        text.text = text.text+"Congrats! \nYour score is\n" + scoreObtained;
     }
 
     private void OnDestroy()
     {
-        if (import ==false)
+        if (!import) //IF IS A NORMAL LEVEL
         {
             GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().ChangeState(StageManager.State.MenuGame);
         }
-        else
+        else //IF IS A IMPORTED LEVEL
         {
             GameObject.Find("LvlImport").GetComponent<StateImportManager>().NextState();
         }

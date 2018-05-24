@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuReadyManagerScore : MonoBehaviour
+public class MenuManagerScore : MonoBehaviour
 {
     public TextMesh ScoreTable;
 
@@ -17,7 +17,8 @@ public class MenuReadyManagerScore : MonoBehaviour
             {
                 ScoreTable.text = ScoreTable.text +
                     "Level: " + lvl.Lvl + "  " +
-                    "Score: " + lvl.Score + "\n";
+                    "Score: " + lvl.Score + "  "+
+                    "Stars: " + lvl.Stars +"/5\n";
             }
         }
     }
@@ -34,11 +35,11 @@ public class MenuReadyManagerScore : MonoBehaviour
         {
             switch (key)
             {
-                case PianoDriver.KeyNote.DO2:
+                case PianoDriver.KeyNote.DO:
                     GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().ChangeState(StageManager.State.MenuGame);
                     Destroy(this.gameObject);
                     break;
-                case PianoDriver.KeyNote.DO:
+                case PianoDriver.KeyNote.DO2:
                     JsonManagerScore.InitLvlJSON();
                     GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().ChangeState(StageManager.State.MenuGame);
                     Destroy(this.gameObject);

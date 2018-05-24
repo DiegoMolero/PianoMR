@@ -33,6 +33,8 @@ public class MusicSheetManager : MonoBehaviour
     [Header("Prefab loads when the game ends")]
     public GameObject lvl_ends;
     private float auxTimer=0;
+    [Header("Prefab loads when the game ends")]
+    public List<int> StarsLimits;
 
     private void Awake()
     {
@@ -105,14 +107,23 @@ public class MusicSheetManager : MonoBehaviour
     private void UpdateMeasure()
     {
         actualMeasure++;
-        if(actualMeasure > TotalMeasures)
+        if(actualMeasure > TotalMeasures) //IF THE LEVEL ENDS
         {
             GameObject lvl_aux = Instantiate(lvl_ends);
-            if (Level != 0) JsonManagerScore.StoreLvlJSON(new LvlJson(Level, actualScore));
+            bool record = false;
+            if (Level != 0)
+            {
+                int stars = calculateStars();
+                record = JsonManagerScore.StoreLvlJSON(new LvlJson(Level, actualScore,stars));
+                lvl_aux.GetComponent<StarDisplay>().DisplayStars(JsonManagerScore.ReadLvlJSON(Level).Stars);
+            }
+            //STORE RESULT
             lvl_aux.GetComponent<FinalResult>().scoreObtained = actualScore;
+            lvl_aux.GetComponent<FinalResult>().New_record = record;
             lvl_aux.name = lvl_aux.transform.name.Replace("(Clone)", "");
-            lvl_aux.transform.position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
+            lvl_aux.transform.position += GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
             lvl_aux.transform.rotation = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().rotation;
+
             Destroy(this.transform.parent.gameObject);
         }
     }
@@ -139,6 +150,20 @@ public class MusicSheetManager : MonoBehaviour
     public void DecreaseScore()
     {
         actualScore = score.DecreaseScore();
+    }
+
+    private int calculateStars()
+    {
+        int counter = 0;
+        foreach (int limit in StarsLimits)
+        {
+            if (actualScore > limit) counter++;
+            else
+            {
+                break;
+            }
+        }
+        return counter;
     }
 }
 

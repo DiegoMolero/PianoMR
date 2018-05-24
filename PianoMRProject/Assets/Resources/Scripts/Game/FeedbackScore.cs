@@ -32,9 +32,8 @@ public class FeedbackScore : MonoBehaviour {
     {
         ConsecutiveHits++;
         updateCombo();
-        int points = ConsecutiveHits * Combo;
+        int points = ConsecutiveHits* Combo;
         Score += points;
-        updateScoreLabel(points);
         updateLabels();
         return Score;
     }
@@ -44,7 +43,6 @@ public class FeedbackScore : MonoBehaviour {
         ConsecutiveHits = 0;
         Combo = 1;
         updateLabels();
-        updateScoreLabel(ConsecutiveHits);
         return Score;
     }
 
@@ -75,7 +73,8 @@ public class FeedbackScore : MonoBehaviour {
     private void updateLabels()
     {
         TxtTotalScore.text = "Score "+Score;
-        TxtCombo.text = "x" + Combo;
+        TxtScore.text = "Combo x" + Combo;
+        TxtCombo.text = "Hits " + ConsecutiveHits;
     }
 
     private void updateScoreLabel(int points)

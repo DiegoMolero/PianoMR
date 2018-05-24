@@ -44,10 +44,11 @@ public class JsonManagerScore
         return null;
     }
 
-    public static void StoreLvlJSON(LvlJson aux)
+    public static bool StoreLvlJSON(LvlJson aux)
     {
         //READ JSON
         bool inside = false;
+        bool new_record = false;
         List<LvlJson> lvls = null;
         try
         {
@@ -55,14 +56,16 @@ public class JsonManagerScore
             //SEARCH LVL
             foreach (LvlJson lvl in lvls)
             {
-                Debug.Log(lvl.Lvl.ToString());
-                Debug.Log(lvl.Score.ToString());
                 //UPDATE IF IS CREATED
                 if (lvl.Lvl == aux.Lvl)
                 {
-                    if (lvl.Score < aux.Score)
+                    if (lvl.Score < aux.Score) // IF NEW RECORD
                     {
                         lvl.Score = aux.Score;
+                        if (lvl.Stars < aux.Stars) { //IF NEW STAR OBTAINED
+                            lvl.Stars = aux.Stars;
+                        } 
+                        new_record = true;
                     }
                     inside = true;
                 }
@@ -70,7 +73,6 @@ public class JsonManagerScore
         }
         catch
         {
-            Debug.Log("SALIAO");
         }
         //CREATE IF IS NEW
         Debug.Log(inside);
@@ -81,6 +83,7 @@ public class JsonManagerScore
                 lvls = new List<LvlJson>();
             }
             lvls.Add(aux);
+            new_record = true;
         }
         //WRITE FILE
         string path = Path.Combine(Application.persistentDataPath, "score.json");
@@ -89,13 +92,18 @@ public class JsonManagerScore
         {
             writer.Write(json);
         }
+        return new_record;
     }
 
     public static void InitLvlJSON()
     {
+        int aux_limit = 5;
         string path = Path.Combine(Application.persistentDataPath, "score.json");
         List<LvlJson> lvlList = new List<LvlJson>();
-        lvlList.Add(new LvlJson(1,0));
+        for(int index = 1; index <= aux_limit; index++)
+        {
+            lvlList.Add(new LvlJson(index, 0, 0));
+        }
         string json = JsonConvert.SerializeObject(lvlList.ToArray());
         using (TextWriter writer = File.CreateText(path))
         {

@@ -138,7 +138,7 @@ Transform:
   m_GameObject: {fileID: 1369729146648764}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.016999962, z: 0}
-  m_LocalScale: {x: -0.078125, y: 0.10000002, z: 0.10000002}
+  m_LocalScale: {x: -0.058962267, y: 0.10000002, z: 0.10000002}
   m_Children: []
   m_Father: {fileID: 4430603313881970}
   m_RootOrder: 0
@@ -165,7 +165,7 @@ Transform:
   m_GameObject: {fileID: 1647283954048300}
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 2.06, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 0.53, y: 0.99999994, z: 0.99999994}
   m_Children:
   - {fileID: 4223906869396114}
   m_Father: {fileID: 4667733920041652}
@@ -179,7 +179,7 @@ Transform:
   m_GameObject: {fileID: 1204199012385226}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.044642854, y: 0.10000001, z: 0.10000001}
+  m_LocalScale: {x: -0.0367647, y: 0.10000002, z: 0.10000002}
   m_Children: []
   m_Father: {fileID: 4719540541704422}
   m_RootOrder: 0
@@ -190,7 +190,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1849609065986384}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.2212, y: 0.0595, z: 0.076}
   m_LocalScale: {x: -0.16, y: 0.05, z: 0.05}
   m_Children:
@@ -208,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 1782024985048040}
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 1.03, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 0.85, y: 0.99999994, z: 0.99999994}
   m_Children:
   - {fileID: 4660740805733492}
   m_Father: {fileID: 4667733920041652}
@@ -539,14 +539,14 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1204199012385226}
-  m_Text: + 0
+  m_Text: Combo x0
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 50
+  m_FontSize: 45
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 86574c70442309b45be5a1c37a37a40b, type: 3}
@@ -569,7 +569,7 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 48
+  m_FontSize: 55
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 86574c70442309b45be5a1c37a37a40b, type: 3}
@@ -583,14 +583,14 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1369729146648764}
-  m_Text: x1
+  m_Text: Hits 0
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 70
+  m_FontSize: 36
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 86574c70442309b45be5a1c37a37a40b, type: 3}
