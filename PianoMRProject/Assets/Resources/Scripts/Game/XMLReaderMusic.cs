@@ -128,7 +128,7 @@ public class XMLReaderMusic : MonoBehaviour {
                             PianoDriver.KeyNote aux_note = ParsePitch(pitch.Element("step").Value, aux_octave);
                             if (pitch.Element("alter") != null) //IF IT IS ALTERED
                             {
-                                Debug.Log(Int32.Parse(pitch.Element("alter").Value));
+                                //Debug.Log(Int32.Parse(pitch.Element("alter").Value));
                                 aux_note += Int32.Parse(pitch.Element("alter").Value);
                             }
                                 if (note.Element("chord") == null) //IF IS NOT A CHORD
@@ -140,7 +140,7 @@ public class XMLReaderMusic : MonoBehaviour {
                             {
                                 noteMusicSheet = new NoteMusicSheet(previous_measure, previous_beat, previous_partbeat, aux_note, 1);
                             }
-                            Debug.Log("NEW NOTE "+aux_note+" IN MEASURE "+ actual_measure+" BEAT "+actual_beat);
+                            //Debug.Log("NEW NOTE "+aux_note+" IN MEASURE "+ actual_measure+" BEAT "+actual_beat);
                             MusicSheetNotes.Add(noteMusicSheet);
                         }
 

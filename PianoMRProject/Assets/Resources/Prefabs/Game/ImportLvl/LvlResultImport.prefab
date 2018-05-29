@@ -112,7 +112,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1536753395290682}
-  m_Text: 3D Text Prefab
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -139,6 +139,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 102267865874499894}
   scoreObtained: 0
-  scoreNeeded: 80
   timeShowResult: 5
   import: 1
+  New_record: 0

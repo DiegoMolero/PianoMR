@@ -2,24 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuManagerScore : MonoBehaviour
+public class MenuManagerOptions : MonoBehaviour
 {
-    public TextMesh ScoreTable;
+    public TextMesh Audio_info;
 
     // Use this for initialization
     void Start()
     {
         GameObject.FindGameObjectWithTag("PianoDriver").GetComponent<PianoDriver>().pianoEvent.AddListener(PianoActionRecieved);
-        List<LvlJson> list = JsonManagerScore.ReadLvlJSON();
-        if (list != null)
+        if (GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AudioNotes)
         {
-            foreach (LvlJson lvl in list)
-            {
-                ScoreTable.text = ScoreTable.text +
-                    "Level: " + lvl.Lvl + "  " +
-                    "Score: " + lvl.Score + "  "+
-                    "Stars: " + lvl.Stars +"/5\n";
-            }
+            Audio_info.text = "M\nU\nT\nE\n\nN\nO\nT\nE\nS";
+        }
+        else
+        {
+            Audio_info.text = "\nU\nN\nM\nU\nT\nE\n\nN\nO\nT\nE\nS";
         }
     }
 
@@ -38,6 +35,18 @@ public class MenuManagerScore : MonoBehaviour
                 case PianoDriver.KeyNote.DO:
                     GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().ChangeState(StageManager.State.MenuGame);
                     Destroy(this.gameObject);
+                    break;
+                case PianoDriver.KeyNote.SOL:
+                    if (GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AudioNotes)
+                    {
+                        GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AudioNotes = false;
+                        Audio_info.text = "\nU\nN\nM\nU\nT\nE\n\nN\nO\nT\nE\nS";
+                    }
+                    else
+                    {
+                        GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().AudioNotes = true;
+                        Audio_info.text = "M\nU\nT\nE\n\nN\nO\nT\nE\nS";
+                    }
                     break;
                 case PianoDriver.KeyNote.DO2:
                     JsonManagerScore.InitLvlJSON();

@@ -13,8 +13,10 @@ public class LevelSelector : MonoBehaviour {
         LvlJson lvlJson = null;
         if (Level_Number != 0) lvlJson = JsonManagerScore.ReadLvlJSON(Level_Number);
         Level_Info.text = "LEVEL " + Level_Number;
+
         if (lvlJson != null)
         {
+            this.GetComponent<StarDisplay>().DisplayStars(lvlJson.Stars);
             Score_Info.text = "Score: "+lvlJson.Score;
         }
 

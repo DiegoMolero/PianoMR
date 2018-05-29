@@ -28,7 +28,7 @@ public class MenuManagerImportLvl : MonoBehaviour
                     this.transform.parent.GetComponent<StateImportManager>().ChangeState(StateImportManager.State.Playing);
                     Destroy(this.gameObject);
                     break;
-                case PianoDriver.KeyNote.RE:
+                case PianoDriver.KeyNote.SOL:
                     this.transform.parent.GetComponent<StateImportManager>().ChangeState(StateImportManager.State.ScanQR);
                     Destroy(this.gameObject);
                     break;
