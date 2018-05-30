@@ -8,7 +8,7 @@ public class FeedbackScore : MonoBehaviour {
     public int ConsecutiveHits;
     public TextMesh TxtCombo;
     public TextMesh TxtTotalScore;
-    public TextMesh TxtScore;
+    public TextMesh TxtHits;
     private AudioSource audioSource;
     [Header("Audio Clips")]
     public List<AudioClip> comboAudio;
@@ -72,14 +72,14 @@ public class FeedbackScore : MonoBehaviour {
 
     private void updateLabels()
     {
-        TxtTotalScore.text = "Score "+Score;
-        TxtScore.text = "Combo x" + Combo;
-        TxtCombo.text = "Hits " + ConsecutiveHits;
+        TxtTotalScore.text = Score.ToString();
+        TxtCombo.text = "x" + Combo;
+        TxtHits.text = ConsecutiveHits.ToString();
     }
 
     private void updateScoreLabel(int points)
     {
-        TxtScore.text = "+ " + points;
+        TxtHits.text = "+ " + points;
     }
     private void playAudioFeedback()
     {

@@ -65,6 +65,8 @@ public class ActivatorNote : MonoBehaviour {
             GameObject.FindGameObjectWithTag("SheetManager").GetComponent<MusicSheetManager>().IncreaseScore();
             GameObject.FindGameObjectWithTag(KeyNote.ToString()).GetComponent<PianoKey>().PressHit();
             active = false;
+            createEffect();
+
         }
         else
         {
@@ -77,4 +79,12 @@ public class ActivatorNote : MonoBehaviour {
     {
         render.material = inactivate_material;
     }
+
+    private void createEffect()
+    {
+        GameObject effect = (Resources.Load("Prefabs/FBX/ParticleKillNote", typeof(GameObject))) as GameObject;
+        GameObject aux = Instantiate(effect, this.transform);
+        Destroy(aux, 5);
+    }
+
 }

@@ -65,7 +65,7 @@ public class LevelsMenu : MonoBehaviour {
         {
             index = 0;
         }
-        Debug.Log(index + "  " + limit);
+        //Debug.Log(index + "  " + limit);
         invokeSphereLevel();
     }
 
@@ -77,7 +77,7 @@ public class LevelsMenu : MonoBehaviour {
         {
             index = limit;
         }
-        Debug.Log(index + "  " + limit);
+        //Debug.Log(index + "  " + limit);
         invokeSphereLevel();
     }
 
