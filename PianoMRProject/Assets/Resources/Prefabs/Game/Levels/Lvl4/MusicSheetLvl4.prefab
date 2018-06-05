@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tempo: 80
-  TotalMeasures: 11
+  TotalMeasures: 12
   BeatsPerMeasure: 4
   InitPositionNotes: 0.4
   notes:
@@ -221,7 +221,7 @@ MonoBehaviour:
     PartBeat: 1
     Note: 67
     Finger: 2
-  - Measure: 10
+  - Measure: 11
     Beat: 1
     PartBeat: 1
     Note: 72

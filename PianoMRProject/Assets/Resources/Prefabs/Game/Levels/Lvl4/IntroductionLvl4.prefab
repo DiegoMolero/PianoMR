@@ -137,10 +137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d19615ca1b6614fae3210093f64d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 1411426976297988, guid: 9ce4f4775acb1a847951d48ee1e561b1, type: 2}
-  InstructionFingers: {fileID: 1674514844607648, guid: a707fc7c9a121b3408bb3f04a0238384,
+  game: {fileID: 1411426976297988, guid: 8953dd51efd45684bba9ffb99d749d4e, type: 2}
+  InstructionFingers: {fileID: 1674514844607648, guid: 9024bb0fd53a4d349a27061f644a1eb6,
     type: 2}
-  InstructionKeys: {fileID: 1950928424351182, guid: a9573c8b6cff98345914696f439fc666,
+  InstructionKeys: {fileID: 1950928424351182, guid: 616055feec2eb564e910e84aacb7730f,
     type: 2}
   Timer: 15
   txt: {fileID: 102239609405732740}
