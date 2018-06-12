@@ -42,8 +42,8 @@ public class TCPCommunication : Singleton<TCPCommunication>
 #endif
     // Update is called once per frame
     void Update () {
-		
-	}
+
+    }
 #if !UNITY_EDITOR
     public async void StartPianoConnection()
     {
@@ -96,6 +96,7 @@ public class TCPCommunication : Singleton<TCPCommunication>
                 catch (Exception e)
                 {
                     Debug.Log("Connection error! :" + e.ToString());
+                    
                 }
 
             }
@@ -105,7 +106,8 @@ public class TCPCommunication : Singleton<TCPCommunication>
         {
             //Handle exception here.  
             Debug.Log("Connection error! :"+e.ToString());
-            //_connection = false;
+            GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().ChangeState(StageManager.State.QRScan);
+            Destroy(this.transform.parent);
         }
     }
 #endif

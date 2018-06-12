@@ -10,12 +10,17 @@ public class FinalResult : MonoBehaviour {
     public bool New_record;
 	// Use this for initialization
 	void Start () {
-        Destroy(this.gameObject, timeShowResult);
         if (New_record == true) //IF IS A NEW RECORD
         {
             text.text = "NEW RECORD!\n";
         }
-        text.text = text.text+"Congrats! \nYour score is\n" + scoreObtained;
+        text.text = text.text+"Your score is\n" + scoreObtained;
+        GameObject.FindGameObjectWithTag("PianoDriver").GetComponent<PianoDriver>().pianoEvent.AddListener(PianoActionRecieved);
+    }
+
+    public void PianoActionRecieved(PianoDriver.KeyNote key, bool action)
+    {
+        if (action == true) Destroy(this.gameObject);
     }
 
     private void OnDestroy()

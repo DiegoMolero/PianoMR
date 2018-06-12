@@ -8,6 +8,7 @@ public class LevelSelector : MonoBehaviour {
     public int Level_Number;
     public TextMesh Level_Info;
     public TextMesh Score_Info;
+    public TextMesh NextStar_Info;
     // Use this for initialization
     void Start () {
         LvlJson lvlJson = null;
@@ -18,6 +19,16 @@ public class LevelSelector : MonoBehaviour {
         {
             this.GetComponent<StarDisplay>().DisplayStars(lvlJson.Stars);
             Score_Info.text = "Score: "+lvlJson.Score;
+            //Calculate next star
+            if (lvlJson.Stars != 0)
+            {
+                if(lvlJson.Stars == 5) NextStar_Info.text = "Level completed!";
+                else
+                {
+                    NextStar_Info.text = "Next star in: " +lvlJson.LimitStarts[lvlJson.Stars];
+                }
+            }
+
         }
 
 

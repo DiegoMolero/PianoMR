@@ -64,6 +64,7 @@ public class JsonManagerScore
                         lvl.Score = aux.Score;
                         if (lvl.Stars < aux.Stars) { //IF NEW STAR OBTAINED
                             lvl.Stars = aux.Stars;
+                            lvl.LimitStarts = aux.LimitStarts;
                         } 
                         new_record = true;
                     }
@@ -75,7 +76,6 @@ public class JsonManagerScore
         {
         }
         //CREATE IF IS NEW
-        Debug.Log(inside);
         if (!inside)
         {
             if (lvls == null)
@@ -100,9 +100,10 @@ public class JsonManagerScore
         int aux_limit = 5;
         string path = Path.Combine(Application.persistentDataPath, "score.json");
         List<LvlJson> lvlList = new List<LvlJson>();
+        int[] limits = new int[] {0,0,0,0,0};
         for(int index = 1; index <= aux_limit; index++)
         {
-            lvlList.Add(new LvlJson(index, 0, 0));
+            lvlList.Add(new LvlJson(index, 0, 0, limits));
         }
         string json = JsonConvert.SerializeObject(lvlList.ToArray());
         using (TextWriter writer = File.CreateText(path))

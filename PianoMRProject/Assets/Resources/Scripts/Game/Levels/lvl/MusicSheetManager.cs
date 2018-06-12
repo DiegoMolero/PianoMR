@@ -114,8 +114,8 @@ public class MusicSheetManager : MonoBehaviour
             if (Level != 0)
             {
                 int stars = calculateStars();
-                record = JsonManagerScore.StoreLvlJSON(new LvlJson(Level, actualScore,stars));
-                lvl_aux.GetComponent<StarDisplay>().DisplayStars(stars);
+                record = JsonManagerScore.StoreLvlJSON(new LvlJson(Level, actualScore,stars, StarsLimits.ToArray()));
+                lvl_aux.GetComponent<StarDisplayEffect>().DisplayStars(stars);
             }
             //STORE RESULT
             lvl_aux.GetComponent<FinalResult>().scoreObtained = actualScore;

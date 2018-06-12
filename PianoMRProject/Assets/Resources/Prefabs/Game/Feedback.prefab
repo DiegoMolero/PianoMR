@@ -263,7 +263,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1809077745066206}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.338, y: 0.017, z: -0.086}
+  m_LocalPosition: {x: 0.2985, y: 0.017, z: -0.086}
   m_LocalScale: {x: -0.03125, y: 0.099999994, z: 0.099999994}
   m_Children: []
   m_Father: {fileID: 4439530320387642}
@@ -289,7 +289,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1223388339973198}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.216, y: 0.626, z: -0.093}
+  m_LocalPosition: {x: 0.31, y: 0.626, z: -0.093}
   m_LocalScale: {x: -0.03125, y: 0.099999994, z: 0.099999994}
   m_Children: []
   m_Father: {fileID: 4439530320387642}
@@ -921,7 +921,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1223388339973198}
-  m_Text: Total Score
+  m_Text: Score
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -963,7 +963,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1809077745066206}
-  m_Text: Hits
+  m_Text: Streak
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1

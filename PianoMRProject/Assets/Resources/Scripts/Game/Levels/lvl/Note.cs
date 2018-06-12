@@ -7,9 +7,10 @@ public class Note : MonoBehaviour {
 
     public PianoDriver.KeyNote Target;
     private bool initialized = false;
-    public TextMesh infoFinguer1;
-    public TextMesh infoFinguer2;
-    private int figuer;
+    public TextMesh infoFinger1;
+    public TextMesh infoFinger2;
+    private int finger;
+    private float speed;
 
     public void Initialize(PianoDriver.KeyNote target, float initPosition, float speed,int finger)
     {
@@ -19,15 +20,13 @@ public class Note : MonoBehaviour {
         rb.velocity = new Vector3(0, speed, 0);
         Target = target;
         this.speed = speed;
-        this.figuer = finger;
+        this.finger = finger;
         if (finger > 0 && finger < 6) {
-            infoFinguer1.text = finger.ToString();
-            infoFinguer2.text = finger.ToString();
+            infoFinger1.text = finger.ToString();
+            infoFinger2.text = finger.ToString();
         }
         initialized = true;
     }
-
-    public float speed;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();

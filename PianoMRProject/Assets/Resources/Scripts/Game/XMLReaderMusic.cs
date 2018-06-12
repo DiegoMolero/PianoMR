@@ -126,21 +126,26 @@ public class XMLReaderMusic : MonoBehaviour {
                             XElement pitch = note.Element("pitch");
                             int aux_octave = Int32.Parse(pitch.Element("octave").Value);
                             PianoDriver.KeyNote aux_note = ParsePitch(pitch.Element("step").Value, aux_octave);
+                            int finger = 0;
                             if (pitch.Element("alter") != null) //IF IT IS ALTERED
                             {
                                 //Debug.Log(Int32.Parse(pitch.Element("alter").Value));
                                 aux_note += Int32.Parse(pitch.Element("alter").Value);
                             }
-                                if (note.Element("chord") == null) //IF IS NOT A CHORD
+                            if (note.Element("chord") == null) //IF IS NOT A CHORD
                             {
-                                noteMusicSheet = new NoteMusicSheet(actual_measure, actual_beat, actual_partbeat,aux_note , 1);
+                                noteMusicSheet = new NoteMusicSheet(actual_measure, actual_beat, actual_partbeat,aux_note , finger);
                                 updatePositionNote(aux_type);
                             }
                             else
                             {
-                                noteMusicSheet = new NoteMusicSheet(previous_measure, previous_beat, previous_partbeat, aux_note, 1);
+                                noteMusicSheet = new NoteMusicSheet(previous_measure, previous_beat, previous_partbeat, aux_note, finger);
                             }
-                            //Debug.Log("NEW NOTE "+aux_note+" IN MEASURE "+ actual_measure+" BEAT "+actual_beat);
+                            try
+                            {
+                                noteMusicSheet.Finger = Int32.Parse(note.Element("notations").Element("technical").Element("fingering").Value);
+                            }catch { }
+                            Debug.Log("NEW NOTE "+aux_note+" IN MEASURE "+ actual_measure+" BEAT "+actual_beat);
                             MusicSheetNotes.Add(noteMusicSheet);
                         }
 

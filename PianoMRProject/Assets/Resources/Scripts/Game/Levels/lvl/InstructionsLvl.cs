@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,10 +20,17 @@ public class InstructionsLvl : MonoBehaviour {
         limit_timer = Timer;
         aux_timer = (int)Timer;
         InstructionState = 0;
+        GameObject.FindGameObjectWithTag("PianoDriver").GetComponent<PianoDriver>().pianoEvent.AddListener(PianoActionRecieved);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void PianoActionRecieved(PianoDriver.KeyNote key, bool action)
+    {
+        if (action == true) initGame();
+
+    }
+
+    // Update is called once per frame
+    void Update () {
         Timer -= Time.deltaTime;
         if((int)Timer < aux_timer)
         {
@@ -58,13 +66,18 @@ public class InstructionsLvl : MonoBehaviour {
 
             if (aux_timer == 0)
             {
-                GameObject lvl_aux = Instantiate(game);
-                lvl_aux.name = lvl_aux.transform.name.Replace("(Clone)", "");
-                lvl_aux.transform.position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
-                lvl_aux.transform.rotation = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().rotation;
-                Destroy(this.gameObject);
+                initGame();
             }
         }
         
+    }
+
+    private void initGame()
+    {
+        GameObject lvl_aux = Instantiate(game);
+        lvl_aux.name = lvl_aux.transform.name.Replace("(Clone)", "");
+        lvl_aux.transform.position = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().position;
+        lvl_aux.transform.rotation = GameObject.FindGameObjectWithTag("Piano").GetComponent<Transform>().rotation;
+        Destroy(this.gameObject);
     }
 }

@@ -58,6 +58,7 @@ public class StageManager : Singleton<StageManager>
     // Use this for initialization
     void Start () {
         string path = Path.Combine(Application.persistentDataPath, "score.json");
+        Debug.Log(path);
         if(!File.Exists(path)) JsonManagerScore.InitLvlJSON();
     }
 	

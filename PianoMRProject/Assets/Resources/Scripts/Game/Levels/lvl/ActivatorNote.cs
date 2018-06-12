@@ -84,7 +84,7 @@ public class ActivatorNote : MonoBehaviour {
     {
         GameObject effect = (Resources.Load("Prefabs/FBX/ParticleKillNote", typeof(GameObject))) as GameObject;
         GameObject aux = Instantiate(effect, this.transform);
-        Destroy(aux, 5);
+        Destroy(aux, 1.5f);
     }
 
 }
