@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Placeholder : MonoBehaviour
 {
-
+    private StageManager AppManager;
   private void Start()
   {
+    AppManager = GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>();
     OnScan();
   }
   public void OnScan()
@@ -21,8 +22,8 @@ public class Placeholder : MonoBehaviour
             Debug.Log("scaneado: " + result);
             if(result == null) OnScan();
             else{
-                GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().IpAdrress = result;
-                GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().NextState();
+                AppManager.IpAdrress = result;
+                AppManager.NextState();
             }
           }, 
           false);

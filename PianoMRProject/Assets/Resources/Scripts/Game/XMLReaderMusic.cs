@@ -145,7 +145,7 @@ public class XMLReaderMusic : MonoBehaviour {
                             {
                                 noteMusicSheet.Finger = Int32.Parse(note.Element("notations").Element("technical").Element("fingering").Value);
                             }catch { }
-                            Debug.Log("NEW NOTE "+aux_note+" IN MEASURE "+ actual_measure+" BEAT "+actual_beat);
+                            //Debug.Log("NEW NOTE "+aux_note+" IN MEASURE "+ actual_measure+" BEAT "+actual_beat);
                             MusicSheetNotes.Add(noteMusicSheet);
                         }
 

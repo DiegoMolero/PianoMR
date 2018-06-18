@@ -9,7 +9,7 @@ public class StarDisplayEffect : MonoBehaviour {
 
     public GameObject[] ListStars;
     public float Timer;
-
+    public float timeDisplayStars;
     private float auxTimer;
     private int index;
     private bool startDisplay = false;
@@ -30,7 +30,7 @@ public class StarDisplayEffect : MonoBehaviour {
             {
                 if(Timer > auxTimer)
                 {
-                    auxTimer++;
+                    auxTimer += timeDisplayStars;
                     startsToShow--;
                     createStarShining();
                     index++;
@@ -50,7 +50,7 @@ public class StarDisplayEffect : MonoBehaviour {
             GameObject aux = Instantiate(StarNormal, StarPosition[i]);
             ListStars[i] = aux;
         }
-        auxTimer = 1;
+        auxTimer = timeDisplayStars;
         startDisplay = true;
     }
 

@@ -9,6 +9,8 @@ public class LevelSelector : MonoBehaviour {
     public TextMesh Level_Info;
     public TextMesh Score_Info;
     public TextMesh NextStar_Info;
+    public GameObject ModelStar;
+    public Transform positionModelStart;
     // Use this for initialization
     void Start () {
         LvlJson lvlJson = null;
@@ -25,7 +27,8 @@ public class LevelSelector : MonoBehaviour {
                 if(lvlJson.Stars == 5) NextStar_Info.text = "Level completed!";
                 else
                 {
-                    NextStar_Info.text = "Next star in: " +lvlJson.LimitStarts[lvlJson.Stars];
+                    NextStar_Info.text = "\nNext         in: " +lvlJson.LimitStarts[lvlJson.Stars];
+                    Instantiate(ModelStar,positionModelStart);
                 }
             }
 
