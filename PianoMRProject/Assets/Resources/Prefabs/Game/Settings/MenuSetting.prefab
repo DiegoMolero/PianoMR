@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4616115028500316}
   - component: {fileID: 114169840040413560}
   m_Layer: 0
-  m_Name: MenuLvlScore
+  m_Name: MenuSetting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

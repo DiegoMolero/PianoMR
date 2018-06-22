@@ -23,6 +23,7 @@ public class MusicSheetManager : MonoBehaviour
     public int actualScore;
     [Header("Song that will be played")]
     public MusicSheet musicSheet;
+    public string FileName;
     private float tempoSong;
     private float speed;
     private int partBeat;
@@ -35,6 +36,7 @@ public class MusicSheetManager : MonoBehaviour
     private float auxTimer=0;
     [Header("Prefab loads when the game ends")]
     public List<int> StarsLimits;
+    private XMLReaderMusic xmlReader;
 
     private void Awake()
     {
@@ -44,6 +46,12 @@ public class MusicSheetManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        xmlReader = this.GetComponent<XMLReaderMusic>();
+        if (musicSheet == null)
+        {
+            xmlReader.ReadLocalFile(FileName);
+            musicSheet= xmlReader.musicSheet;
+        }
         initPositionNotes = musicSheet.InitPositionNotes;
         Tempo = musicSheet.Tempo;
         TotalMeasures = musicSheet.TotalMeasures;

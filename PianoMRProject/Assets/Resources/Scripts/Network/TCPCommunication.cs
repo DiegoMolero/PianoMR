@@ -17,9 +17,11 @@ public class TCPCommunication : Singleton<TCPCommunication>
 {
     [Tooltip("Port for connecting to the server")]
     public String Port="8000";
+    private StageManager AppManager;
     [Tooltip("IP of the server. (Given by QR Code)")]
     public String Host= "";
     private PianoDriver _pianodriver;
+
 
 
     private Boolean _connection;
@@ -29,12 +31,14 @@ public class TCPCommunication : Singleton<TCPCommunication>
     // Use this for initialization
 #if UNITY_EDITOR
     void Start () {
+         AppManager = GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>();
 		_connection = false;
 	}
 #endif
 #if !UNITY_EDITOR
     async void Start()
     {
+        AppManager = GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>();
         Host = GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().IpAdrress;
         StartPianoConnection();
         _connection = false;
@@ -71,7 +75,7 @@ public class TCPCommunication : Singleton<TCPCommunication>
             await _socket.ConnectAsync(serverHost, Port);
             //Connection Suscess
             Debug.Log("Connected");
-            GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().NextState();
+            AppManager.NextState();
             _connection = true;
             //Write data to the echo server.
             /*
@@ -106,7 +110,7 @@ public class TCPCommunication : Singleton<TCPCommunication>
         {
             //Handle exception here.  
             Debug.Log("Connection error! :"+e.ToString());
-            GameObject.FindGameObjectWithTag("AppManager").GetComponent<StageManager>().ChangeState(StageManager.State.QRScan);
+            AppManager.ChangeState(StageManager.State.QRScan);
             Destroy(this.transform.parent);
         }
     }
