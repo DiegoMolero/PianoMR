@@ -46,12 +46,17 @@ public class MusicSheetManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        xmlReader = this.GetComponent<XMLReaderMusic>();
-        if (musicSheet == null)
+        try
         {
-            xmlReader.ReadLocalFile(FileName);
-            musicSheet= xmlReader.musicSheet;
+            xmlReader = this.GetComponent<XMLReaderMusic>();
+            if (FileName != null)
+            {
+                xmlReader.ReadLocalFile(FileName);
+                musicSheet = xmlReader.musicSheet;
+            }
         }
+        catch { }
+
         initPositionNotes = musicSheet.InitPositionNotes;
         Tempo = musicSheet.Tempo;
         TotalMeasures = musicSheet.TotalMeasures;
