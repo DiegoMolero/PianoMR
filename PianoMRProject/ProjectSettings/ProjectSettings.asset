@@ -11,8 +11,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DiegoMolero
-  productName: JoyPianoMR
+  companyName: Diego Molero Marin
+  productName: HoloMusic XP
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -537,8 +537,12 @@ PlayerSettings:
   metroCertificateIssuer: DefaultCompany
   metroCertificateNotAfter: 00357df6e8d8d401
   metroApplicationDescription: PianoMRProject
-  wsaImages: {}
-  metroTileShortName: PianoMRProject
+  wsaImages:
+    2031816: Assets/Resources/Logo/Logo_88.png
+    2097352: Assets/Resources/Logo/Logo_142.png
+    2162888: Assets/Resources/Logo/Logo_300.png
+    2228424: Assets/Resources/Logo/Logo_620.png
+  metroTileShortName: HoloMusic XP
   metroCommandLineArgsFile: 
   metroTileShowName: 0
   metroMediumTileShowName: 0
